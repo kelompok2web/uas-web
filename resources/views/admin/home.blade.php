@@ -88,7 +88,7 @@
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
                 <span class="text-primary">
-                    <i class="fas fa-arrow-up"></i> 
+                    <i class="fas fa-arrow-up"></i> {{ $mhs }}
                 </span>
 
             </div>
@@ -96,18 +96,19 @@
             <div class="card-body">
                 <div class="col-md-10">
                     <div class="chart-responsive">
-                        <canvas id="pieChartSiswa" height="150"></canvas>
+                        <canvas id="pieChartMhs" height="100"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-primary"></i> Laki-Laki
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-danger"></i> Perempuan
+                        </span>
+    
                     </div>
                 </div>
-                <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-primary"></i> Laki-Laki
-                    </span>
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-danger"></i> Perempuan
-                    </span>
-
-                </div>
+                
             </div>
         </div>
     </div>
@@ -116,4 +117,39 @@
 
 @endsection
 
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            'use strict'
+
+
+            var pieChartCanvasMhs = $('#pieChartMhs').get(0).getContext('2d')
+            var pieDataMhs        = {
+                labels: [
+                    'Laki-laki',
+                    'Perempuan',
+                ],
+                datasets: [
+                    {
+                    data: [{{ $mhslk }}, {{ $mhspr }}],
+                    backgroundColor : ['#007BFF', '#DC3545'],
+                    }
+                ]
+            }
+            var pieOptions     = {
+                legend: {
+                    display: false
+                }
+            }
+            var pieChart = new Chart(pieChartCanvasMhs, {
+                type: 'doughnut',
+                data: pieDataMhs,
+                options: pieOptions
+            })
+
+
+        })
+
+    </script>
+@endsection
 

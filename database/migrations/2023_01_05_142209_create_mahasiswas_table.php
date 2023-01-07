@@ -20,8 +20,7 @@ return new class extends Migration
             $table->enum('jk', ['L', 'P']);
             $table->string('tmp_lahir', 50);
             $table->date('tgl_lahir');
-            $table->integer('jurusan_id');
-            $table->integer('prodi_id');
+            $table->integer('prodi_id')->nullable();
             $table->timestamps();
         });
     }

@@ -46,17 +46,15 @@ class MahasiswaController extends Controller
             'jk' => 'required',
             'tmp_lahir' => 'required',
             'tgl_lahir' => 'required',
-            'jurusan_id' => 'required',
             'prodi_id' => 'required',
         ]);
 
-        $prodi = Prodi::create([
+        $prodi = Mahasiswa::create([
             'nama_mahasiswa' => $request->nama_mahasiswa,
             'nim_mahasiswa' => $request->nim_mahasiswa,
             'jk' => $request->jk,
             'tmp_lahir' => $request->tmp_lahir,
             'tgl_lahir' => $request->tgl_lahir,
-            'jurusan_id' => $request->jurusan_id,
             'prodi_id' => $request->prodi_id,
         ]);
 

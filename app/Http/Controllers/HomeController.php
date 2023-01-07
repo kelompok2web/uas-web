@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Jurusan;
 use App\Models\Prodi;
+use App\Models\Mahasiswa;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,9 @@ class HomeController extends Controller
     {
         $jurusan = Jurusan::count();
         $prodi = Prodi::count();
-        return view('admin.home',compact('jurusan','prodi'));
+        $mhs = Mahasiswa::count();
+        $mhslk = Mahasiswa::where('jk', 'L')->count();
+        $mhspr = Mahasiswa::where('jk', 'P')->count();
+        return view('admin.home',compact('jurusan','prodi','mhs','mhslk','mhspr'));
     }
 }

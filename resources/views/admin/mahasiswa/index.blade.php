@@ -24,6 +24,7 @@
                     <th>No.</th>
                     <th>Nama Mahasiswa</th>
                     <th>Nim</th>
+                    <th>Prodi</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -82,7 +83,7 @@
                             <input type="text" id="nim_mahasiswa" name="nim_mahasiswa"  class="form-control @error('nim_mahasiswa') is-invalid @enderror">
                         </div>
                     </div>
-                    
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="tmp_lahir">Tempat Lahir</label>
@@ -97,17 +98,6 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="jurusan_id">Jurusan</label>
-                            <select id="jurusan_id" name="jurusan_id" class="select2bs4 form-control @error('jurusan_id') is-invalid @enderror">
-                                <option value="">-- Pilih Jurusan --</option>
-                                @foreach ($jurusan as $data)
-                                    <option value="{{ $data->id }}">{{ $data->nama_jurusan }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
                             <label for="prodi_id">Prodi</label>
                             <select id="prodi_id" name="prodi_id" class="select2bs4 form-control @error('prodi_id') is-invalid @enderror">
                                 <option value="">-- Pilih Prodi --</option>
@@ -117,7 +107,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="jk">Jenis Kelamin</label>
                             <select id="jk" name="jk" class="select2bs4 form-control @error('jk') is-invalid @enderror">
