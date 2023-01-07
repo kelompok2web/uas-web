@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kriteria', function (Blueprint $table) {
+        Schema::create('jurusan', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('atribut_kriteria');
-            $table->string('nama_kriteria');
-            $table->float('bobot_kriteria');
+            $table->string('nama_jurusan', 50);
             $table->timestamps();
         });
-    } 
+    }
 
     /**
      * Reverse the migrations.
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kriteria');
+        Schema::dropIfExists('jurusan');
     }
 };

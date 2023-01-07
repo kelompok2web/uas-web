@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\MahasiswaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,3 +32,10 @@ Route::get('/logout', function(){
     Auth::logout();
     return redirect('/');
 });
+
+Route::resource('jurusan', JurusanController::class);
+
+
+Route::resource('prodi', ProdiController::class);
+
+Route::resource('mahasiswa', MahasiswaController::class);

@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('penilaians', function (Blueprint $table) {
-            $table->increments('id_penilaian');
+        Schema::create('penilaian', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('mahasiswa_id');
             $table->integer('kriteria_id');
+            $table->float('nilai_alternatif')->unsigned()->nullable();
             $table->timestamps();
+
+           
         });
     }
 
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penilaians');
+        Schema::dropIfExists('penilaian');
     }
 };

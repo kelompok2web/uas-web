@@ -10,13 +10,24 @@ class Mahasiswa extends Model
     use HasFactory;
     protected $fillable=[
         'nama_mahasiswa',
-        'jrsn_mahasiswa',
-        'prodi_mahasiswa'
+        'nim_mahasiswa',
+        'jk',
+        'tmp_lahir',
+        'tgl_lahir',
+        'jurusan_id',
+        'prodi_id'
 
     ];
 
-    public function penilaian()
+    public function jurusans()
     {
-        return $this->belongsTo('App\Models\Ke','kelas_id');
+        return $this->belongsTo(Jurusan::class,'jurusan_id','id');
     }
+
+    public function prodis()
+    {
+        return $this->belongsTo(Prodi::class,'prodi_id','id');
+    }
+
+    protected $table = 'mahasiswa';
 }

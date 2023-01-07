@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subkriterias', function (Blueprint $table) {
-            $table->increments('id_subkriterias');
+        Schema::create('subkriteria', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->integer('kriteria_id');
             $table->string('nama_crips');
-            $table->string('nilai');
+            $table->float('nilai');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subkriterias');
+        Schema::dropIfExists('subkriteria');
     }
 };

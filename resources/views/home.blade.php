@@ -9,7 +9,7 @@
 
 
     <h1 class="h3 mb-4 text-gray-800">
-        Selamat Datang Brow
+        Selamat Datang {{ Auth::user()->name }}
     </h1>
 
 </div>

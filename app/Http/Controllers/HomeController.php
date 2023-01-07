@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Jurusan;
+use App\Models\Prodi;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $jurusan = Jurusan::count();
+        $prodi = Prodi::count();
+        return view('admin.home',compact('jurusan','prodi'));
     }
 }
