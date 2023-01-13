@@ -65,7 +65,13 @@ class JurusanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=Jurusan::find($id);
+        $jurusan = Jurusan::orderBy('nama_jurusan')->get();
+
+        $send=[
+            "data"=>$data,
+        ];
+        return view('admin.jurusan.edit',$send);
     }
 
     /**
@@ -77,8 +83,13 @@ class JurusanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=Jurusan::find($id);
+        $data->nama_jurusan=$request->nama_jurusan;
+        $data->save();
+
+        return redirect('/jurusan')->with('success', 'Berhasil mengubah data');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -88,6 +99,9 @@ class JurusanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data=Jurusan::find($id);
+        $data->delete();
+
+        return redirect('/jurusan')->with('success', 'Berhasil Menghapus data');
     }
 }

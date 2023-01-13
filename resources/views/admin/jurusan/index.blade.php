@@ -33,11 +33,11 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->nama_jurusan }}</td>
                     <td>
-                        <form action="" method="POST">
+                        <form action="{{ route('jurusan.destroy',$data->id) }}"method="GET">
                             @csrf
                             @method('delete')
                             <a href="" class="btn btn-info btn-sm mt-2"><i class="nav-icon fas fa-id-card"></i></a>
-                            <a href="" class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i></a>
+                            <a href="{{ route('jurusan.edit', $data->id) }}"class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i></a>
                             <button class="btn btn-danger btn-sm mt-2"><i class="nav-icon fas fa-trash-alt"></i></button>
                         </form>
                     </td>
@@ -76,7 +76,7 @@
               </div>
               <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-default" data-dismiss="modal"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</button>
-                  <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Perbarui</button>
+                  <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Tambah</button>
               </div>
           </form>
       </div>

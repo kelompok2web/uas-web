@@ -17,6 +17,13 @@ class ProdiController extends Controller
     {
         $jurusan = Jurusan::orderBy('nama_jurusan')->get();
         $prodi = Prodi::all();
+        // return $prodi;
+        //looping
+        for ($i=0; $i < count($prodi); $i++) { 
+            $prodi[$i]->jurusans=Jurusan::find($prodi[$i]->jurusan_id);
+        }
+        // return $prodi;
+        
         return view('admin.prodi.index', compact('jurusan','prodi'));
     }
 
@@ -70,7 +77,14 @@ class ProdiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=Prodi::find($id);
+        $jurusan = Jurusan::orderBy('nama_jurusan')->get();
+        $send=[
+            "data"=>$data,
+            "jurusan"=>$jurusan,
+    
+        ];
+        return view('admin.prodi.edit',$send);
     }
 
     /**
@@ -82,7 +96,14 @@ class ProdiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=Prodi::find($id);
+        $data->nama_prodi=$request->nama_prodi;
+        $data->jurusan_id=$request->jurusan_id;
+        $data->save();
+
+        //update user disini
+
+        return redirect('/prodi')->with('success', 'Berhasil mengubah data');
     }
 
     /**
@@ -93,6 +114,12 @@ class ProdiController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
+        $data=Prodi::find($id);
+        $data->delete();
+
+        //delete user disini
+
+        return redirect('/prodi')->with('success', 'Berhasil Menghapus data');
     }
 }

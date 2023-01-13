@@ -29,17 +29,18 @@
                 </tr>
             </thead>
             <tbody>
+ {{-- {{ dd($prodi) }}   --}}
                 @foreach ($prodi as $data)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->nama_prodi }}</td>
                     <td>{{ $data->jurusans->nama_jurusan}}</td>
                     <td>
-                        <form action="" method="POST">
+                        <form action="{{ route('prodi.destroy',$data->id) }}"method="GET">
                             @csrf
                             @method('delete')
                             <a href="" class="btn btn-info btn-sm mt-2"><i class="nav-icon fas fa-id-card"></i></a>
-                            <a href="" class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i></a>
+                            <a href="{{ route('prodi.edit', $data->id) }}" class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i></a>
                             <button class="btn btn-danger btn-sm mt-2"><i class="nav-icon fas fa-trash-alt"></i></button>
                         </form>
                     </td>

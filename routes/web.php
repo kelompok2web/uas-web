@@ -34,8 +34,15 @@ Route::get('/logout', function(){
 });
 
 Route::resource('jurusan', JurusanController::class);
+Route::POST('/jurusan/update/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
+Route::GET('/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
 
 
 Route::resource('prodi', ProdiController::class);
+Route::GET('/prodi/destroy/{id}', [ProdiController::class, 'destroy'])->name('prodi.destroy');
+Route::POST('/prodi/update/{id}', [ProdiController::class, 'update'])->name('prodi.update');
 
-Route::resource('mahasiswa', MahasiswaController::class);
+
+Route::resource('/mahasiswa', MahasiswaController::class);
+Route::POST('/mahasiswa/updateV2/{id}', [MahasiswaController::class, 'updateV2'])->name('mahasiswa.updateV2');
+Route::GET('/mahasiswa/destroyV2/{id}', [MahasiswaController::class, 'destroyV2'])->name('mahasiswa.destroyV2');

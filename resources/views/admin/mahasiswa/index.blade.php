@@ -29,19 +29,20 @@
                 </tr>
             </thead>
             <tbody>
+                 {{-- {{ dd($mhs) }}   --}}
                 @foreach ($mhs as $data)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->nama_mahasiswa }}</td>
                     <td>{{ $data->nim_mahasiswa }}</td>
-                    <td>{{ $data->prodis->nama_prodi }}</td>
+                    <td>{{ $data->prodi->nama_prodi}}</td>
                     <td>
-                        <form action="}" method="POST">
+                        <form action="{{ route('mahasiswa.destroyV2',$data->id) }}"method="GET">
                             @csrf
                             @method('delete')
                             <a href="" class="btn btn-info btn-sm mt-2"><i class="nav-icon fas fa-id-card"></i></a>
-                            <a href="" class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i></a>
-                            <button class="btn btn-danger btn-sm mt-2"><i class="nav-icon fas fa-trash-alt"></i></button>
+                            <a href="{{ route('mahasiswa.edit', $data->id) }}" class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i></a>
+                            <button type="submit" class="btn btn-danger btn-sm mt-2"><i class="nav-icon fas fa-trash-alt"></i></button>
                         </form>
                     </td>
                 </tr>
@@ -120,7 +121,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</button>
-                    <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Perbarui</button>
+                    <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Tambah</button>
                 </div>
             </form>
         </div>

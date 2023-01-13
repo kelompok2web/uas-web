@@ -19,6 +19,12 @@ class MahasiswaController extends Controller
         $jurusan = Jurusan::orderBy('nama_jurusan')->get();
         $prodi = Prodi::orderBy('nama_prodi')->get();
         $mhs = Mahasiswa::all();
+
+        // return $mhs;
+        for ($i=0; $i < count($mhs); $i++) { 
+            $mhs[$i]->prodi=Prodi::find($mhs[$i]->prodi_id);
+        }
+        // return $mhs;
         return view('admin.mahasiswa.index', compact('jurusan','prodi','mhs'));
     }
 
@@ -80,8 +86,17 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=Mahasiswa::find($id);
+        $jurusan = Jurusan::orderBy('nama_jurusan')->get();
+        $prodi = Prodi::orderBy('nama_prodi')->get();
+        $send=[
+            "data"=>$data,
+            "jurusan"=>$jurusan,
+            "prodi"=>$prodi
+        ];
+        return view('admin.mahasiswa.edit',$send);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -95,6 +110,22 @@ class MahasiswaController extends Controller
         //
     }
 
+    public function updateV2(Request $request, $id)
+    {
+        $data=Mahasiswa::find($id);
+        $data->nama_mahasiswa=$request->nama_mahasiswa;
+        $data->nim_mahasiswa=$request->nim_mahasiswa;
+        $data->tmp_lahir=$request->tmp_lahir;
+        $data->tgl_lahir=$request->tgl_lahir;
+        $data->prodi_id=$request->prodi_id;
+        $data->jk=$request->jk;
+        $data->save();
+
+        //update user disini
+
+        return redirect('/mahasiswa')->with('success', 'Berhasil mengubah data');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -104,5 +135,14 @@ class MahasiswaController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function destroyV2($id)
+    {
+        $data=Mahasiswa::find($id);
+        $data->delete();
+
+        //delete user disini
+
+        return redirect('/mahasiswa')->with('success', 'Berhasil Menghapus data');
     }
 }
