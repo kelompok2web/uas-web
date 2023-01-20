@@ -7,7 +7,6 @@ use App\Models\Jurusan;
 use App\Models\Prodi;
 use App\Models\User;
 use App\Models\Mahasiswa;
-use App\Models\User;
 
 class MahasiswaController extends Controller
 {

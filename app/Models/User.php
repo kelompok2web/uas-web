@@ -42,12 +42,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function mahasiswa($id)
-    {
-        $mhs = Mahasiswa::where('nim_mahasiswa', $id)->first();
-        return $mhs;
-    }
-
     /**
      * The attributes that should be cast.
      *
