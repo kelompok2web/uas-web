@@ -24,44 +24,13 @@
     <link rel="shrotcut icon" href="{{ asset('favicon.ico') }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     <link href="{{ asset('template/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('sweetalert2/dist/sweetalert2.min.css') }}">
+
+    
 
     <!-- PWA  -->
     <meta name="theme-color" content="#6777ef"/>
     <link rel="apple-touch-icon" href="{{ asset('favicon.ico') }}">
-
-    {{-- <style>
-        .ctr {
-            text-align: center !important;
-        }
-
-        thead > tr > th, tbody > tr > td{
-            vertical-align: middle !important;
-        }
-
-        td> input.form-control{
-            width: 60px !important;
-            padding: 8px !important;
-            box-shadow: none !important;
-        }
-
-
-
-        input[disabled],input[disabled]:hover{
-            cursor: default !important;
-            border:none !important;
-        }
-
-        .textarea-raport{
-            font-size:11px !important;
-            background: #fff !important;
-            border:none !important;
-            font-size: 16px !important;
-            cursor: default !important;
-        }
-
-
-
-    </style> --}}
 
 </head>
 
@@ -158,11 +127,14 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('template/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('template/js/demo/chart-pie-demo.js') }}"></script>
-
+    <script src="{{ asset('sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('sweetalert2/dist/sweetalert2.min.js')}}"></script>
 
 
     <!-- Page level custom scripts -->
 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
     <script src="{{ asset('template/plugins/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('template/plugins/ekko-lightbox/ekko-lightbox.min.js') }}"></script>

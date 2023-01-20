@@ -11,9 +11,11 @@
         <div class="card-header justify-content-between">
             <h3 class="card-title ">
                 <a href="{{ route('home') }}" class="btn btn-default btn-sm"><i class="nav-icon fas fa-arrow-left"></i> &nbsp; Kembali</a>
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".tambah-siswa">
+                
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
                     <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Jurusan
                 </button>
+                  
             </h3>
             
         </div>
@@ -53,36 +55,36 @@
     <!-- /.card -->
 </div>
 
-
-<div class="modal fade bd-example-modal-md tambah-siswa" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
       <div class="modal-content">
-      <div class="modal-header">
-          <h4 class="modal-title">Tambah Data Jurusan</h4>
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Jurusan</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true">&times;</span>
           </button>
-      </div>
-      <div class="modal-body">
-          <form action="{{ route('jurusan.store') }}" method="POST">
-              @csrf
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="form-group">
-                          <label for="nama_jurusan">Nama Jurusan</label>
-                          <input type="text" id="nama_jurusan" name="nama_jurusan"  class="form-control @error('no_induk') is-invalid @enderror">
-                      </div>
-                  </div>
-              </div>
-              <div class="modal-footer justify-content-between">
-                  <button type="button" class="btn btn-default" data-dismiss="modal"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</button>
-                  <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Tambah</button>
-              </div>
-          </form>
-      </div>
+        </div>
+        <div class="modal-body">
+            <form action="{{ route('jurusan.store') }}" method="POST">
+                @csrf
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="nama_jurusan">Nama Jurusan</label>
+                            <input type="text" id="nama_jurusan" name="nama_jurusan"  class="form-control @error('no_induk') is-invalid @enderror">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</button>
+                    <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Tambah</button>
+                </div>
+            </form>
+        </div>
       </div>
     </div>
 </div>
+
 
 <!-- /.col -->
 @endsection
