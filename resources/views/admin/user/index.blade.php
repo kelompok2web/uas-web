@@ -46,8 +46,9 @@
 <!-- /.col -->
 
 <!-- Extra large modal -->
-<div class="modal fade bd-example-modal-lg tambah-user" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+
+<div class="modal fade bd-example-modal-md tambah-user" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
     <div class="modal-header">
         <h4 class="modal-title">Tambah Data User</h4>
@@ -59,7 +60,7 @@
         <form action="{{ route('user.store') }}" method="POST" >
             @csrf
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-12">
                     <div class="form-group">
                         <label for="email">Alamat Email</label>
                         <input id="email" type="email" placeholder="{{ __('E-Mail Address') }}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
@@ -120,7 +121,9 @@
         $('#role').change(function(){
             var kel = $('#role option:selected').val();
             if (kel == "Mahasiswa") {
-              $("#noId").html('<label for="nim_mhs">NIM</label><input id="nim_mhs" type="number" placeholder="NIM Mahasiswa" class="form-control" name="nim_mhs" autocomplete="off">');
+              $("#noId").html('<label for="nomor">Nomor NIM</label><input id="nim_mhs" type="number" maxlength="12"  placeholder="NIM Mahasiswa" class="form-control" name="nim_mhs" autocomplete="off">');
+            } else if(kel == "Admin") {
+              $("#noId").html(`<label for="name">Username</label><input id="name" type="text" placeholder="Username" class="form-control" name="name" autocomplete="off">`);
             } else {
               $("#noId").html("")
             }

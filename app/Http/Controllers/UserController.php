@@ -47,6 +47,8 @@ class UserController extends Controller
             'role' => 'required',
         ]);
         if($request->role == 'Mahasiswa')
+
+        if ($request->role == 'Mahasiswa')
         {
             $countMhs = Mahasiswa::where('nim_mahasiswa', $request->nim_mhs)->count();
             $mhsId = Mahasiswa::where('nim_mahasiswa', $request->nim_mhs)->get();
@@ -76,7 +78,6 @@ class UserController extends Controller
             ]);
             return redirect()->back()->with('success', 'Berhasil menambahkan user Admin baru!');
         }
-
     }
 
     /**

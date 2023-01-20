@@ -7,6 +7,7 @@ use App\Models\Jurusan;
 use App\Models\Prodi;
 use App\Models\User;
 use App\Models\Mahasiswa;
+use App\Models\User;
 
 class MahasiswaController extends Controller
 {
@@ -133,7 +134,7 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id)
     {
         $mhs = Mahasiswa::findorfail($id);
         $countUser = User::where('nim_mahasiswa', $mhs->nim_mahasiswa)->count();
@@ -141,10 +142,10 @@ class MahasiswaController extends Controller
             $user = User::where('nim_mahasiswa', $mhs->nim_mahasiswa)->first();
             $mhs->delete();
             $user->delete();
-            return redirect()->back()->with('warning', 'Data siswa berhasil dihapus! (Silahkan cek trash data siswa)');
+            return redirect()->back()->with('warning', 'Data siswa berhasil dihapus! (Silahkan cek trash data mahasiswa)');
         } else {
-            $siswa->delete();
-            return redirect()->back()->with('warning', 'Data siswa berhasil dihapus! (Silahkan cek trash data siswa)');
+            $mhs->delete();
+            return redirect()->back()->with('warning', 'Data siswa berhasil dihapus! (Silahkan cek trash data mahasiswa)');
         }
     }
     public function destroyV2($id)
@@ -171,10 +172,10 @@ class MahasiswaController extends Controller
             $user = User::withTrashed()->where('nim_mahasiswa', $mhs->nim_mahasiswa)->first();
             $mhs->restore();
             $user->restore();
-            return redirect()->back()->with('info', 'Data siswa berhasil direstore! (Silahkan cek data siswa)');
+            return redirect()->back()->with('info', 'Data siswa berhasil direstore! (Silahkan cek data mahasiswa)');
         } else {
-            $siswa->restore();
-            return redirect()->back()->with('info', 'Data siswa berhasil direstore! (Silahkan cek data siswa)');
+            $mhs->restore();
+            return redirect()->back()->with('info', 'Data siswa berhasil direstore! (Silahkan cek data mahasiswa)');
         }
     }
 
@@ -188,7 +189,7 @@ class MahasiswaController extends Controller
             $user->forceDelete();
             return redirect()->back()->with('success', 'Data siswa berhasil dihapus secara permanent');
         } else {
-            $siswa->forceDelete();
+            $mhs->forceDelete();
             return redirect()->back()->with('success', 'Data siswa berhasil dihapus secara permanent');
         }
     }
