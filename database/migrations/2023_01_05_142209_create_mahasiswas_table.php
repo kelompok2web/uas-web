@@ -22,6 +22,8 @@ return new class extends Migration
             $table->date('tgl_lahir');
             $table->integer('prodi_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
