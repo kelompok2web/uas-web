@@ -40,7 +40,6 @@
                             @if ($data->role == 'Mahasiswa')
                             <td>{{ $data->nim_mahasiswa }}</td>
                             @endif
-
                             <td>
                                 <form action="{{ route('user.destroy', $data->id) }}" method="post">
                                 @csrf

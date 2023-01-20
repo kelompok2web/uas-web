@@ -11,7 +11,7 @@
         <div class="card-header">
             <h3 class="card-title ">
                 <a href="{{ route('home') }}" class="btn btn-default btn-sm"><i class="nav-icon fas fa-arrow-left"></i> &nbsp; Kembali</a>
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".tambah-mhs">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
                     <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Mahasiswa
                 </button>
             </h3>
@@ -37,7 +37,7 @@
                     <td>{{ $data->nim_mahasiswa }}</td>
                     <td>{{ $data->prodi->nama_prodi}}</td>
                     <td>
-                        <form action="{{ route('mahasiswa.destroyV2',$data->id) }}"method="GET">
+                        <form action="{{ route('mahasiswa.destroy',$data->id) }}"method="POST">
                             @csrf
                             @method('delete')
                             <a href="" class="btn btn-info btn-sm mt-2"><i class="nav-icon fas fa-id-card"></i></a>
@@ -59,15 +59,16 @@
 
 <!-- /.col -->
 
-<div class="modal fade bd-example-modal-lg tambah-mhs" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Tambah Data Mahasiswa</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+
+<div class="modal fade " id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Mahasiswa</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <div class="modal-body">
             <form action="{{ route('mahasiswa.store') }}" method="POST">
                 @csrf
@@ -128,4 +129,7 @@
       </div>
     </div>
 </div>
+
+
+
 @endsection

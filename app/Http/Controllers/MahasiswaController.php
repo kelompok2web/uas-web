@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Jurusan;
 use App\Models\Prodi;
+use App\Models\User;
 use App\Models\Mahasiswa;
+use App\Models\User;
 
 class MahasiswaController extends Controller
 {
@@ -132,9 +134,19 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id)
     {
-        //
+        $mhs = Mahasiswa::findorfail($id);
+        $countUser = User::where('nim_mahasiswa', $mhs->nim_mahasiswa)->count();
+        if ($countUser >= 1) {
+            $user = User::where('nim_mahasiswa', $mhs->nim_mahasiswa)->first();
+            $mhs->delete();
+            $user->delete();
+            return redirect()->back()->with('warning', 'Data siswa berhasil dihapus! (Silahkan cek trash data mahasiswa)');
+        } else {
+            $mhs->delete();
+            return redirect()->back()->with('warning', 'Data siswa berhasil dihapus! (Silahkan cek trash data mahasiswa)');
+        }
     }
     public function destroyV2($id)
     {
@@ -144,5 +156,41 @@ class MahasiswaController extends Controller
         //delete user disini
 
         return redirect('/mahasiswa')->with('success', 'Berhasil Menghapus data');
+    }
+
+    public function trash()
+    {
+        $mhs = Mahasiswa::onlyTrashed()->get();
+        return view('admin.mahasiswa.trash', compact('mhs'));
+    }
+
+    public function restore($id)
+    {
+        $mhs = Mahasiswa::withTrashed()->findorfail($id);
+        $countUser = User::withTrashed()->where('nim_mahasiswa', $mhs->nim_mahasiswa)->count();
+        if ($countUser >= 1) {
+            $user = User::withTrashed()->where('nim_mahasiswa', $mhs->nim_mahasiswa)->first();
+            $mhs->restore();
+            $user->restore();
+            return redirect()->back()->with('info', 'Data siswa berhasil direstore! (Silahkan cek data mahasiswa)');
+        } else {
+            $mhs->restore();
+            return redirect()->back()->with('info', 'Data siswa berhasil direstore! (Silahkan cek data mahasiswa)');
+        }
+    }
+
+    public function execute($id)
+    {
+        $mhs = Mahasiswa::withTrashed()->findorfail($id);
+        $countUser = User::withTrashed()->where('nim_mahasiswa', $mhs->nim_mahasiswa)->count();
+        if ($countUser >= 1) {
+            $user = User::withTrashed()->where('nim_mahasiswa', $mhs->nim_mahasiswa)->first();
+            $mhs->forceDelete();
+            $user->forceDelete();
+            return redirect()->back()->with('success', 'Data siswa berhasil dihapus secara permanent');
+        } else {
+            $mhs->forceDelete();
+            return redirect()->back()->with('success', 'Data siswa berhasil dihapus secara permanent');
+        }
     }
 }

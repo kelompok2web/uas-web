@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProdiController;
-use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MahasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,18 +35,26 @@ Route::get('/logout', function(){
     return redirect('/');
 });
 
-Route::resource('jurusan', JurusanController::class);
-Route::POST('/jurusan/update/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
-Route::GET('/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
+
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['admin'])->group(function () {
+        Route::middleware(['trash'])->group(function (){
+            Route::get('/admin/mahasiswa/trash', [MahasiswaController::class,'trash'])->name('mahasiswa.trash');
+            Route::get('/mahasiswa/restore/{id}', [MahasiswaController::class,'restore'])->name('mahasiswa.restore');
+            Route::delete('/mahasiswa/execute/{id}', [MahasiswaController::class,'execute'])->name('mahasiswa.execute');
+        });
+        Route::resource('jurusan', JurusanController::class);
+        Route::POST('/jurusan/update/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
+        Route::GET('/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
 
 
-Route::resource('prodi', ProdiController::class);
-Route::GET('/prodi/destroy/{id}', [ProdiController::class, 'destroy'])->name('prodi.destroy');
-Route::POST('/prodi/update/{id}', [ProdiController::class, 'update'])->name('prodi.update');
+        Route::resource('prodi', ProdiController::class);
+        Route::GET('/prodi/destroy/{id}', [ProdiController::class, 'destroy'])->name('prodi.destroy');
+        Route::POST('/prodi/update/{id}', [ProdiController::class, 'update'])->name('prodi.update');
 
-
-Route::resource('/mahasiswa', MahasiswaController::class);
-Route::POST('/mahasiswa/updateV2/{id}', [MahasiswaController::class, 'updateV2'])->name('mahasiswa.updateV2');
-Route::GET('/mahasiswa/destroyV2/{id}', [MahasiswaController::class, 'destroyV2'])->name('mahasiswa.destroyV2');
-
-Route::resource('user', UserController::class);
+        Route::resource('/mahasiswa', MahasiswaController::class);
+        Route::POST('/mahasiswa/updateV2/{id}', [MahasiswaController::class, 'updateV2'])->name('mahasiswa.updateV2');
+        Route::GET('/mahasiswa/destroyV2/{id}', [MahasiswaController::class, 'destroyV2'])->name('mahasiswa.destroyV2');
+        Route::resource('user', UserController::class);
+    });
+});

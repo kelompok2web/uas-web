@@ -59,7 +59,7 @@
         <form action="{{ route('user.store') }}" method="POST" >
             @csrf
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-12">
                     <div class="form-group">
                         <label for="email">Alamat Email</label>
                         <input id="email" type="email" placeholder="{{ __('E-Mail Address') }}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">

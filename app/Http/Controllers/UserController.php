@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -55,15 +56,15 @@ class UserController extends Controller
             }
             if ($countMhs >= 1) {
                 User::create([
-                    'name' => $mhs->nama_mahasiswa,
+                    'name' => strtolower($mhs->nama_mahasiswa),
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'role' => $request->role,
                     'nim_mahasiswa' => $request->nim_mhs,
                 ]);
-                return redirect()->back()->with('success', 'Berhasil menambahkan user Guru baru!');
+                return redirect()->back()->with('success', 'Berhasil menambahkan user Mahasiswa baru!');
             } else {
-                return redirect()->back()->with('error', 'Maaf User ini tidak terdaftar sebagai guru!');
+                return redirect()->back()->with('error', 'Maaf User ini tidak terdaftar sebagai Mahasiswa!');
             }
         }
         else
