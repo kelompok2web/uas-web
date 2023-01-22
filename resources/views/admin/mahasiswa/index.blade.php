@@ -40,9 +40,10 @@
                         <form action="{{ route('mahasiswa.destroy',$data->id) }}"method="POST">
                             @csrf
                             @method('delete')
+                    
                             <a href="" class="btn btn-info btn-sm mt-2"><i class="nav-icon fas fa-id-card"></i></a>
                             <a href="{{ route('mahasiswa.edit', $data->id) }}" class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i></a>
-                            <button type="submit" class="btn btn-danger btn-sm mt-2"><i class="nav-icon fas fa-trash-alt"></i></button>
+                            <button type="submit" onclick="return confirm('Apakah yakin menghapus data ini?');" class="btn btn-danger btn-sm mt-2"><i class="nav-icon fas fa-trash-alt"></i></button>
                         </form>
                     </td>
                 </tr>
@@ -76,32 +77,32 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="nama_mahasiswa">Nama Mahasiswa</label>
-                            <input type="text" id="nama_mahasiswa" name="nama_mahasiswa"  class="form-control @error('nama_mahasiswa') is-invalid @enderror">
+                            <input type="text" id="nama_mahasiswa" name="nama_mahasiswa"  class="form-control @error('nama_mahasiswa') is-invalid @enderror" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="nim_mahasiswa">NIM Mahasiswa</label>
-                            <input type="text" id="nim_mahasiswa" name="nim_mahasiswa"  class="form-control @error('nim_mahasiswa') is-invalid @enderror">
+                            <input type="text" id="nim_mahasiswa" name="nim_mahasiswa"  class="form-control @error('nim_mahasiswa') is-invalid @enderror" required>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="tmp_lahir">Tempat Lahir</label>
-                            <input type="text" id="tmp_lahir" name="tmp_lahir" class="form-control @error('tmp_lahir') is-invalid @enderror">
+                            <input type="text" id="tmp_lahir" name="tmp_lahir" class="form-control @error('tmp_lahir') is-invalid @enderror" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="tgl_lahir">Tanggal Lahir</label>
-                            <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control @error('tgl_lahir') is-invalid @enderror">
+                            <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control @error('tgl_lahir') is-invalid @enderror" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="prodi_id">Prodi</label>
-                            <select id="prodi_id" name="prodi_id" class="select2bs4 form-control @error('prodi_id') is-invalid @enderror">
+                            <select id="prodi_id" name="prodi_id" class="select2bs4 form-control @error('prodi_id') is-invalid @enderror" required>
                                 <option value="">-- Pilih Prodi --</option>
                                 @foreach ($prodi as $data)
                                     <option value="{{ $data->id }}">{{ $data->nama_prodi }}</option>
@@ -112,7 +113,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="jk">Jenis Kelamin</label>
-                            <select id="jk" name="jk" class="select2bs4 form-control @error('jk') is-invalid @enderror">
+                            <select id="jk" name="jk" class="select2bs4 form-control @error('jk') is-invalid @enderror" required>
                                 <option value="">-- Pilih Jenis Kelamin --</option>
                                 <option value="L">Laki-Laki</option>
                                 <option value="P">Perempuan</option>

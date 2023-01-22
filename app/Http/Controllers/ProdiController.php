@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Jurusan;
 use App\Models\Prodi;
-
+use DB;
 class ProdiController extends Controller
 {
     /**
@@ -114,12 +114,18 @@ class ProdiController extends Controller
      */
     public function destroy($id)
     {
-       
-        $data=Prodi::find($id);
-        $data->delete();
+        DB::beginTransaction();
 
-        //delete user disini
-
-        return redirect('/prodi')->with('success', 'Berhasil Menghapus data');
+        try {
+            $data=Prodi::find($id);
+            $data->delete();
+    
+            //delete user disini
+            DB::commit();
+            return redirect('/prodi')->with('success', 'Berhasil Menghapus data');
+        }catch(\Throwable $e) {
+            DB::rollBack();
+            return redirect('/prodi')->with('success', 'Gagal Menghapus data');
+        }
     }
 }

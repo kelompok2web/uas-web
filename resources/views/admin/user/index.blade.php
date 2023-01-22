@@ -62,7 +62,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="email">Alamat Email</label>
-                        <input id="email" type="email" placeholder="{{ __('E-Mail Address') }}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
+                        <input id="email" type="email" placeholder="{{ __('E-Mail Address') }}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" required>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="form-group">
                         <label for="role">Level User</label>
-                        <select id="role" type="text" class="form-control @error('role') is-invalid @enderror select2bs4" name="role" value="{{ old('role') }}" autocomplete="role">
+                        <select id="role" type="text" class="form-control @error('role') is-invalid @enderror select2bs4" name="role" value="{{ old('role') }}" autocomplete="role" required>
                           <option value="">-- Select {{ __('Level User') }} --</option>
                           <option value="Admin">Admin</option>
                           <option value="Mahasiswa">Mahasiswa</option>
@@ -85,7 +85,7 @@
                     <div class="form-group" id="noId"></div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input id="password" type="password" placeholder="{{ __('Password') }}" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+                        <input id="password" type="password" placeholder="{{ __('Password') }}" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" required>
                         @error('password')
                           <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="form-group">
                         <label for="password-confirm">Confirm Password</label>
-                        <input id="password-confirm" type="password" placeholder="{{ __('Confirm Password') }}" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" autocomplete="new-password">
+                        <input id="password-confirm" type="password" placeholder="{{ __('Confirm Password') }}" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" autocomplete="new-password" required>
                         @error('password')
                           <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -105,7 +105,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</button>
-                <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Perbarui</button>
+                <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Tambah</button>
             </div>
         </form>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Jurusan;
+use DB;
 
 class JurusanController extends Controller
 {
@@ -99,9 +100,20 @@ class JurusanController extends Controller
      */
     public function destroy($id)
     {
-        $data=Jurusan::find($id);
-        $data->delete();
+       
+        DB::beginTransaction();
 
-        return redirect('/jurusan')->with('success', 'Berhasil Menghapus data');
+        try {
+            $data=Jurusan::find($id);
+            $data->delete();
+    
+            //delete user disini
+            DB::commit();
+            return redirect('/jurusan')->with('success', 'Berhasil Menghapus data');
+        }catch(\Throwable $e) {
+            DB::rollBack();
+            return redirect('/jurusan')->with('success', 'Gagal Menghapus data');
+        }
+
     }
 }

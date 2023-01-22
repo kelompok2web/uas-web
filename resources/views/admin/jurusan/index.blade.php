@@ -21,6 +21,14 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            <div class="row">
+                @if(session('success'))
+                <div class="alert alert-success" role="alert">
+                  {{session('success')}}
+                </div>
+                @endif
+              </div>
+              
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
@@ -40,7 +48,7 @@
                             @method('delete')
                             <a href="" class="btn btn-info btn-sm mt-2"><i class="nav-icon fas fa-id-card"></i></a>
                             <a href="{{ route('jurusan.edit', $data->id) }}"class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i></a>
-                            <button class="btn btn-danger btn-sm mt-2"><i class="nav-icon fas fa-trash-alt"></i></button>
+                            <button class="btn btn-danger btn-sm mt-2" onclick="return confirm('Apakah yakin menghapus data ini?');"><i class="nav-icon fas fa-trash-alt"></i></button>
                         </form>
                     </td>
                 </tr>
@@ -71,7 +79,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="nama_jurusan">Nama Jurusan</label>
-                            <input type="text" id="nama_jurusan" name="nama_jurusan"  class="form-control @error('no_induk') is-invalid @enderror">
+                            <input type="text" id="nama_jurusan" name="nama_jurusan"  class="form-control @error('no_induk') is-invalid @enderror" required>
                         </div>
                     </div>
                 </div>
