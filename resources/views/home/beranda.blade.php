@@ -21,22 +21,7 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-md navbar-white fixed-top bg-white">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Carousel</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="/login">Login</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        @include('home.nav')
     </header>
 
     <main>
@@ -49,7 +34,7 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="images/poli.jpg" class="d-block w-100" alt="images">
+                    <img src="images/poli.jpg" class="d-block w-100" alt="images">
                     <div class="container">
                         <div class="carousel-caption text-start">
                             <h1>Politeknik Negeri Padang</h1>
@@ -101,7 +86,6 @@
         <!-- Wrap the rest of the page in another container to center all the content. -->
 
         <div class="container marketing">
-
             <!-- Three columns of text below the carousel -->
             <div class="row">
                 <div class="col-lg-4">
@@ -143,12 +127,8 @@
                     <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
-
-
             <!-- START THE FEATURETTES -->
-
             <hr class="featurette-divider">
-
             <div class="row featurette">
                 <div class="col-md-7">
                     <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span
@@ -207,14 +187,9 @@
                     </svg>
                 </div>
             </div>
-
             <hr class="featurette-divider">
-
             <!-- /END THE FEATURETTES -->
-
         </div><!-- /.container -->
-
-
         <!-- FOOTER -->
         <footer class="container">
             <p class="float-end"><a href="#">Back to top</a></p>
@@ -222,11 +197,7 @@
                     href="#">Terms</a></p>
         </footer>
     </main>
-
-
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-
 </body>
 
 </html>
