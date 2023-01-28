@@ -39,7 +39,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Hasil Perhitungan</h6>
                     <a class="collapse-item" href="{{route('saw.index')}}">Perhitungan Metode SAW</a>
-                    <a class="collapse-item" href="#">Hasil SAW</a>
+                    <a class="collapse-item" href="{{ route('kriteria.index') }}">Kriteria</a>
+                    <a class="collapse-item" href="#">Crips</a>
                 </div>
             </div>
         </li>
