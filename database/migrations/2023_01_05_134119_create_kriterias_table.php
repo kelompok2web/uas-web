@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('kriteria', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('atribut_kriteria');
             $table->string('nama_kriteria');
-            $table->float('bobot_kriteria');
+            $table->string('atribut');
+            $table->float('bobot');
             $table->timestamps();
         });
     } 
