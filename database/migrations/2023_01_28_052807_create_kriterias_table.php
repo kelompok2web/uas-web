@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('kriteria', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('atribut_kriteria');
-            $table->string('nama_kriteria');
-            $table->float('bobot_kriteria');
+            $table->string('kode')->unique();
+            $table->string('nama');
+            $table->enum('jenis', ['benefit', 'cost']);
+            $table->float('bobot');
             $table->timestamps();
         });
-    } 
+    }
 
     /**
      * Reverse the migrations.
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kriteria');
+        Schema::dropIfExists('kriterias');
     }
 };

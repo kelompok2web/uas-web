@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\SawController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,5 +58,9 @@ Route::middleware(['auth'])->group(function () {
         Route::POST('/mahasiswa/updateV2/{id}', [MahasiswaController::class, 'updateV2'])->name('mahasiswa.updateV2');
         Route::GET('/mahasiswa/destroyV2/{id}', [MahasiswaController::class, 'destroyV2'])->name('mahasiswa.destroyV2');
         Route::resource('user', UserController::class);
+
+        Route::resource('/saw', SawController::class);
+        Route::resource('/kriteria', KriteriaController::class);
+
     });
 });
