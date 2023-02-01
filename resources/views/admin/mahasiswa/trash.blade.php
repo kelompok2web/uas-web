@@ -8,11 +8,18 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">
-                Trash Data Mahasiswa
+               
             </h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            <div class="row">
+                @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            </div>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>

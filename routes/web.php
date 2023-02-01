@@ -45,6 +45,21 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/mahasiswa/restore/{id}', [MahasiswaController::class,'restore'])->name('mahasiswa.restore');
             Route::delete('/mahasiswa/execute/{id}', [MahasiswaController::class,'execute'])->name('mahasiswa.execute');
         });
+
+        Route::middleware(['trash'])->group(function (){
+            Route::get('/admin/jurusan/trash', [JurusanController::class,'trash'])->name('jurusan.trash');
+            Route::get('/jurusan/restore/{id}', [JurusanController::class,'restore'])->name('jurusan.restore');
+            Route::delete('/jurusan/execute/{id}', [JurusanController::class,'execute'])->name('jurusan.execute');
+        });
+
+        Route::middleware(['trash'])->group(function (){
+            Route::get('/admin/prodi/trash', [ProdiController::class,'trash'])->name('prodi.trash');
+            Route::get('/prodi/restore/{id}', [ProdiController::class,'restore'])->name('prodi.restore');
+            Route::delete('/prodi/execute/{id}', [ProdiController::class,'execute'])->name('prodi.execute');
+        });
+
+
+
         Route::resource('jurusan', JurusanController::class);
         Route::POST('/jurusan/update/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
         Route::GET('/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');

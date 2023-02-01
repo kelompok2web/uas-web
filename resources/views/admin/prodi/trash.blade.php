@@ -1,7 +1,7 @@
 @extends('frontend.home')
-@section('heading', 'Trash Jurusan')
+@section('heading', 'Trash Prodi')
 @section('page')
-  <li class="breadcrumb-item active">Trash Jurusan</li>
+  <li class="breadcrumb-item active">Trash Prodi</li>
 @endsection
 @section('content')
 <div class="col-md-12">
@@ -24,20 +24,22 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Nama Jurusan</th>
+                    <th>Nama Prodi</th>
+                    <th>Jurusan</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($jrs as $data)
+                @foreach ($prodi as $data)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $data->nama_jurusan }}</td>
+                    <td>{{ $data->nama_prodi }}</td>
+                    <td>{{ $data->jurusans->nama_jurusan}}</td>
                     <td>
-                        <form action="{{ route('jurusan.execute', $data->id) }}" method="POST">
+                        <form action="{{ route('prodi.execute', $data->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <a href="{{ route('jurusan.restore', $data->id) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-undo"></i></a>
+                            <a href="{{ route('prodi.restore', $data->id) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-undo"></i></a>
                             <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i></button>
                         </form>
                     </td>

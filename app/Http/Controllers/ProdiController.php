@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Jurusan;
 use App\Models\Prodi;
+use App\Models\User;
 use DB;
 class ProdiController extends Controller
 {
@@ -128,4 +129,42 @@ class ProdiController extends Controller
             return redirect('/prodi')->with('success', 'Gagal Menghapus data');
         }
     }
+
+    public function trash()
+    {
+        $prodi= Prodi::onlyTrashed();
+        return view('admin.prodi.trash', compact('prodi'));
+    }
+
+    public function restore($id)
+    {
+        $prodi = Prodi::withTrashed()->findorfail($id);
+        $countUser = Prodi::withTrashed()->where('nama_prodi', $prodi->nama_prodi)->count();
+        if ($countUser >= 1) {
+            $user = Prodi::withTrashed()->where('nama_prodi', $prodi->nama_prodi)->first();
+            $prodi->restore();
+            $user->restore();
+            return redirect()->back()->with('info', 'Data Prodi berhasil direstore! (Silahkan cek data Prodi)');
+        } else {
+            $prodi->restore();
+            return redirect()->back()->with('info', 'Data Prodi berhasil direstore! (Silahkan cek data Prodi)');
+        }
+    }
+
+    public function execute($id)
+    {
+        $prodi = Prodi::withTrashed()->findorfail($id);
+        $countUser = Prodi::withTrashed()->where('nama_prodi', $prodi->nama_prodi)->count();
+        if ($countUser >= 1) {
+            $user = Prodi::withTrashed()->where('nama_prodi', $prodi->nama_prodi)->first();
+            $prodi->forceDelete();
+            $user->forceDelete();
+            return redirect()->back()->with('success', 'Data Prodi berhasil dihapus secara permanent');
+        } else {
+            $prodi->forceDelete();
+            return redirect()->back()->with('success', 'Data Prodi berhasil dihapus secara permanent');
+        }
+    }
+
+
 }

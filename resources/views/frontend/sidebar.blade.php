@@ -77,8 +77,8 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom View Trash:</h6>
-                    <a class="collapse-item" href="#">Trash Jurusan</a>
-                    <a class="collapse-item" href="#">Trash Prodi</a>
+                    <a class="collapse-item" href="{{ route('jurusan.trash') }}">Trash Jurusan</a>
+                    <a class="collapse-item" href="{{ route('prodi.trash') }}">Trash Prodi</a>
                     <a class="collapse-item" href="{{ route('mahasiswa.trash') }}">Trash Mahasiswa</a>
                 </div>
             </div>

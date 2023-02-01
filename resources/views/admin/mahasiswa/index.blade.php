@@ -18,6 +18,13 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            <div class="row">
+                @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            </div>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
