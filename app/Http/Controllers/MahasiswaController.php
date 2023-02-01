@@ -65,7 +65,7 @@ class MahasiswaController extends Controller
             'prodi_id' => $request->prodi_id,
         ]);
 
-        return redirect()->back()->with('success', 'Berhasil menambahkan data prodi baru!');
+        return redirect()->back()->with('success', 'Berhasil menambahkan data mahasiswa baru!');
     }
 
     /**
@@ -194,5 +194,5 @@ class MahasiswaController extends Controller
     }
 }
 
-// hari ini hari minggu
+
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Jurusan;
+use App\Models\User;
 use DB;
 
 class JurusanController extends Controller
@@ -116,4 +117,41 @@ class JurusanController extends Controller
         }
 
     }
+
+    public function trash()
+    {
+        $jrs= Jurusan::onlyTrashed()->get();
+        return view('admin.jurusan.trash', compact('jrs'));
+    }
+
+    public function restore($id)
+    {
+        $jrs = Jurusan::withTrashed()->findorfail($id);
+        $countUser = Jurusan::withTrashed()->where('nama_jurusan', $jrs->nama_jurusan)->count();
+        if ($countUser >= 1) {
+            $user = Jurusan::withTrashed()->where('nama_jurusan', $jrs->nama_jurusan)->first();
+            $jrs->restore();
+            $user->restore();
+            return redirect()->back()->with('info', 'Data jurusan berhasil direstore! (Silahkan cek data jurusan)');
+        } else {
+            $jrs->restore();
+            return redirect()->back()->with('info', 'Data jurusan berhasil direstore! (Silahkan cek data jurusan)');
+        }
+    }
+
+    public function execute($id)
+    {
+        $jrs = Jurusan::withTrashed()->findorfail($id);
+        $countUser = Jurusan::withTrashed()->where('nama_jurusan', $jrs->nama_jurusan)->count();
+        if ($countUser >= 1) {
+            $user = Jurusan::withTrashed()->where('nama_jurusan', $jrs->nama_jurusan)->first();
+            $jrs->forceDelete();
+            $user->forceDelete();
+            return redirect()->back()->with('success', 'Data jurusan berhasil dihapus secara permanent');
+        } else {
+            $jrs->forceDelete();
+            return redirect()->back()->with('success', 'Data jurusan berhasil dihapus secara permanent');
+        }
+    }
+
 }
