@@ -132,7 +132,7 @@ class ProdiController extends Controller
 
     public function trash()
     {
-        $prodi= Prodi::onlyTrashed();
+        $prodi= Prodi::onlyTrashed()->get();
         return view('admin.prodi.trash', compact('prodi'));
     }
 
