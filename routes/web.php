@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CripsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -76,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::resource('/saw', SawController::class);
         Route::resource('/kriteria', KriteriaController::class);
+        Route::resource('/crips', CripsController::class);
 
     });
 });
