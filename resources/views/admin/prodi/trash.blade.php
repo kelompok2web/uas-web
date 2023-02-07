@@ -56,3 +56,5 @@
 </div>
 
 @endsection
+
+//trash berhasil
