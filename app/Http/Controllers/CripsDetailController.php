@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Crips;
 use Illuminate\Http\Request;
+use App\Models\CripsDetail;
+use App\Models\Crips;
 
-class CripsController extends Controller
+class CripsDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,9 @@ class CripsController extends Controller
      */
     public function index()
     {
-        $crips = Crips::all();
-        return view('admin.crips.index', compact('crips'));
+        $cd = CripsDetail::all();
+        $crips = Crips::orderBy('nama_crips')->get();
+        return view('admin.cripsdetail.index', compact('cd','crips'));
     }
 
     /**
@@ -37,22 +39,27 @@ class CripsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_crips' => 'required'
+            'deskripsi' => 'required',
+            'kelompok' => 'required',
+            'crips_id'=>'required'
         ]);
 
-        $crips = Crips::create([
-            'nama_crips' => $request->nama_crips
+        $cd = CripsDetail::create([
+            'deskripsi' => $request->deskripsi,
+            'kelompok' => $request->kelompok,
+            'crips_id'=>$request->crips_id
         ]);
-        return redirect()->back()->with('success', 'Berhasil menambahkan data crips baru!');
+
+        return redirect()->back()->with('success', 'Berhasil menambahkan data crips detail baru!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Crips  $crips
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Crips $crips)
+    public function show($id)
     {
         //
     }
@@ -60,50 +67,52 @@ class CripsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Crips  $crips
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $item = Crips::find($id);
+        $data = CripsDetail::find($id);
         $crips = Crips::orderBy('nama_crips')->get();
-
         $send=[
-            "item" => $item
+            "data"=>$data,
+            "crips"=>$crips,
+    
         ];
-
-        return view('admin.crips.edit', $send);
+        return view('admin.cripsdetail.edit',$send);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Crips  $crips
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
+        $data=CripsDetail::find($id);
+        $data->crips_id=$request->crips_id;
+        $data->deskripsi=$request->deskripsi;
+        $data->kelompok=$request->kelompok;
+        $data->save();
 
-        $item = Crips::find($id);
-        $item->nama_crips=$request->nama_crips;
-        $item->save();
+        //update user disini
 
-       return redirect('/crips')->with('success', 'Berhasil update data crips!');
-
+        return redirect('/cripsdetail')->with('success', 'Berhasil mengubah data');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Crips  $crips
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $item=Crips::find($id);
+        $item=CripsDetail::find($id);
         $item->delete();
-        return redirect('/crips')->with('success', 'Berhasil menghapus data crips!');
+        return redirect('/cripsdetail')->with('success', 'Berhasil menghapus data crips!');
 
     }
 }

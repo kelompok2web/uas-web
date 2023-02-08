@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama_prodi', 50);
             $table->integer('jurusan_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

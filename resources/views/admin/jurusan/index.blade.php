@@ -3,6 +3,7 @@
     Data Jurusan
 @endsection
 @section('page')
+<li class="breadcrumb-item active">Data Jurusan</li>
 @endsection
 @section('content')
     <div class="col-md-12">

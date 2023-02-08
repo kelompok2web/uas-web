@@ -10,6 +10,8 @@ use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\SawController;
+use App\Http\Controllers\CripsDetailController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/saw', SawController::class);
         Route::resource('/kriteria', KriteriaController::class);
         Route::resource('/crips', CripsController::class);
+        Route::resource('/cripsdetail', CripsDetailController::class);
 
     });
 });

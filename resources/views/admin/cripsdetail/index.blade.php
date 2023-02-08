@@ -1,9 +1,9 @@
 @extends('frontend.home')
 @section('heading')
-    Data Crips
+    Data Crips Detail
 @endsection
 @section('page')
-<li class="breadcrumb-item active">Data Crips</li>
+<li class="breadcrumb-item active">Data Crips Detail</li>
 @endsection
 @section('content')
     <div class="col-md-12">
@@ -15,7 +15,7 @@
                         &nbsp; Kembali</a>
 
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
-                        <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Crips
+                        <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Crips Detail
                     </button>
                 </h3>
             </div>
@@ -35,21 +35,23 @@
                         <tr>
                             <th>No.</th>
                             <th>Nama Crips</th>
+                            <th>Deskripsi</th>
+                            <th>Kelompok</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($crips as $item)
+                        @foreach ($cd as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->nama_crips }}</td>
+                                <td>{{ $item->crips->nama_crips }}</td>
+                                <td>{{ $item->deskripsi }}</td>
+                                <td>{{ $item->kelompok }}</td>
                                 <td>
-                                    <form action="{{ route('crips.destroy', $item->id) }}"method="Post">
+                                    <form action="{{ route('cripsdetail.destroy', $item->id) }}"method="Post">
                                         @csrf
                                         @method('delete')
-                                        <a href="" class="btn btn-info btn-sm mt-2"><i
-                                                class="nav-icon fas fa-id-card"></i></a>
-                                        <a href="{{ route('crips.edit', $item->id) }}"class="btn btn-success btn-sm mt-2"><i
+                                        <a href="{{ route('cripsdetail.edit', $item->id) }}"class="btn btn-success btn-sm mt-2"><i
                                                 class="nav-icon fas fa-edit"></i></a>
                                         <button class="btn btn-danger btn-sm mt-2"
                                             onclick="return confirm('Apakah yakin menghapus data ini?');"><i
@@ -76,15 +78,41 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('crips.store') }}" method="POST">
+                    <form action="{{ route('cripsdetail.store') }}" method="POST">
                         @csrf
                         <div class="row">
 
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="nama_crips">Nama Crips</label>
-                                    <input type="text" id="nama_crips" name="nama_crips"
+                                    <label for="crips_id">Nama Crips</label>
+                                    <select id="crips_id" name="crips_id" class="select2bs4 form-control @error('crips_id') is-invalid @enderror" required>
+                                        <option value="">-- Pilih Crips --</option>
+                                        @foreach ($crips as $data)
+                                            <option value="{{ $data->id }}">{{ $data->nama_crips }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="deskripsi">Deskripsi</label>
+                                    <input type="text" id="deskripsi" name="deskripsi"
                                         class="form-control @error('nama_crips') is-invalid @enderror" required>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="kelompok">Kelompok</label>
+                                    <input type="number" id="kelompok" name="kelompok"
+                                        class="form-control @error('kelompok') is-invalid @enderror" required>
                                 </div>
                             </div>
 
