@@ -15,12 +15,12 @@ class Atribut extends Model
 
     public function kriteria()
     {
-        return $this->belongsTo(Kriteria::class, 'kriteria_id');
+        return $this->belongsTo(Kriteria::class, 'kriteria_id','id');
     }
 
     public function mahasiswa()
     {
-        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id');
+        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id','id');
     }
 
     public function getRealValueAttribute()

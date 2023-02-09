@@ -83,6 +83,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/crips', CripsController::class);
         Route::resource('/cripsdetail', CripsDetailController::class);
         Route::resource('/atribut', AtributController::class);
-
+        Route::GET('/atr-saw', [SAWController::class, 'index'])->name('atr-saw.index');
+        Route::GET('/atr-saw/hasil', [SAWController::class, 'sample'])->name('atr-saw.sample');
+        Route::GET('/atr-saw/hasil2', [SAWController::class, 'sample'])->name('atr-saw.sample');
     });
 });
