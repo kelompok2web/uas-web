@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Atribut extends Model
 {
     use HasFactory;
-    protected $table='atribut';
+    protected $table='atributs';
     protected $fillable = [
         'kriteria_id', 'mahasiswa_id', 'value'
     ];

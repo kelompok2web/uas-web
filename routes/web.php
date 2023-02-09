@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AtributController;
 use App\Http\Controllers\CripsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -81,6 +82,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/kriteria', KriteriaController::class);
         Route::resource('/crips', CripsController::class);
         Route::resource('/cripsdetail', CripsDetailController::class);
+        Route::resource('/atribut', AtributController::class);
 
     });
 });

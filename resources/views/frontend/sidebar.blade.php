@@ -39,6 +39,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Hasil Perhitungan</h6>
                     <a class="collapse-item" href="{{route('saw.index')}}">Perhitungan SAW</a>
+                    <a class="collapse-item" href="{{route('atribut.index')}}">Atribut</a>
                     <a class="collapse-item" href="{{ route('kriteria.index') }}">Data Kriteria</a>
                     <a class="collapse-item" href="{{ route('crips.index') }}">Data Crips</a>
                     <a class="collapse-item" href="{{ route('cripsdetail.index') }}">Data Crips Detail</a>
