@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kriteria;
+use App\Models\Crips;
 use Illuminate\Http\Request;
 
 class KriteriaController extends Controller
@@ -15,7 +16,8 @@ class KriteriaController extends Controller
     public function index()
     {
         $kriteria = Kriteria::all();
-        return view('admin.kriteria.index', ['kriteria' => $kriteria]);
+        $crips = Crips::orderBy('nama_crips')->get();
+        return view('admin.kriteria.index', compact('kriteria','crips'));
 
     }
 
@@ -39,19 +41,19 @@ class KriteriaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'kode' => 'required|unique:kriteria',
-            'nama' => 'required',
-            'jenis' => 'required',
-            'bobot' => 'required'
-        ], $this->errorMessage());
+            'nama_kriteria' => 'required',
+            'bobot' => 'required',
+            'tipe_data' => 'required',
+
+        ]);
         Kriteria::create([
-            'kode' => $request->kode,
-            'nama' => $request->nama,
-            'jenis' => $request->jenis,
-            'bobot' => $request->bobot
+            'nama_kriteria' => $request->nama_kriteria,
+            'bobot' => $request->bobot,
+            'tipe_data' => $request->tipe_data,
+            'crips_id' => $request->crips_id
         ]);
 
-        return redirect(route('kriteria'));
+        return redirect('/kriteria')->with('success', 'Berhasil menambahkan data kriteria baru!');
     }
 
     /**
@@ -71,9 +73,16 @@ class KriteriaController extends Controller
      * @param  \App\Models\kriteria  $kriteria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kriteria $kriteria)
+    public function edit($id)
     {
-        //
+        $data = Kriteria::find($id);
+        $crips = Crips::orderBy('nama_crips')->get();
+        $send=[
+            "data"=>$data,
+            "crips"=>$crips,
+    
+        ];
+        return view('admin.kriteria.edit',$send);
     }
 
     /**
@@ -83,9 +92,18 @@ class KriteriaController extends Controller
      * @param  \App\Models\kriteria  $kriteria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kriteria $kriteria)
+    public function update(Request $request, $id)
     {
-        //
+        $data=Kriteria::find($id);
+        $data->nama_kriteria=$request->nama_kriteria;
+        $data->crips_id=$request->crips_id;
+        $data->bobot=$request->bobot;
+        $data->tipe_data=$request->tipe_data;
+        $data->save();
+
+        //update user disini
+
+        return redirect('/kriteria')->with('success', 'Berhasil mengubah data');
     }
 
     /**
@@ -94,8 +112,11 @@ class KriteriaController extends Controller
      * @param  \App\Models\kriteria  $kriteria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kriteria $kriteria)
+    public function destroy($id)
     {
-        //
+        $item=Kriteria::find($id);
+        $item->delete();
+        return redirect('/kriteria')->with('success', 'Berhasil menghapus data kriteria!');
+
     }
 }

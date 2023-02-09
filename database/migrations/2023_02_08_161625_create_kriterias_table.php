@@ -14,12 +14,19 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kriteria', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('kode')->unique();
-            $table->string('nama');
-            $table->enum('jenis', ['benefit', 'cost']);
-            $table->float('bobot');
+            $table->id();
+            $table->string('nama_kriteria')->nullable();
+            $table->float('bobot', 5, 2)->nullable();
+            $table->enum('tipe_data', ['Float', 'Crips','Integer']);
+            $table->unsignedBigInteger('crips_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('crips_id')
+                ->on('crips')
+                ->references('id')
+                ->onUpdate('cascade')
+                ->onDelete('cascade')
+            ;
         });
     }
 

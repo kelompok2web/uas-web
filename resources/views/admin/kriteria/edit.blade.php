@@ -13,50 +13,52 @@ Edit Kriteria
                     <h3 class="card-title">Edit Data</h3>
                 </div>
             </div>
-            <form role="form" action="{{ route('kriteria.update')}}" method="POST">
+            <form role="form" action="#" method="POST">
+                @csrf
+                @method('put')
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-10 offset-sm-1">
-                            <!-- text input -->
-                            @csrf
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="nim">Kode <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" value="{{ old('kode')}}" name="kode" placeholder="Kode Kriteria">
-                                @if ($errors->has('kode'))
-                                <div class="text-danger">{{ ucfirst(trans($errors->first('kode'))) }}</div>
-                                @endif
+                                <label for="nama_kriteria">Nama Kriteria</label>
+                                <input type="text" id="nama_kriteria" name="nama_kriteria"
+                                    class="form-control @error('nama_kriteria') is-invalid @enderror" value="{{ $data->nama_kriteria }}">
                             </div>
+                        </div>
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="nama">Nama <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" value="{{ old('nama')}}" name="nama" placeholder="Nama Kriteria">
-                                @if ($errors->has('nama'))
-                                <div class="text-danger">{{ ucfirst(trans($errors->first('nama'))) }}</div>
-                                @endif
+                                <label for="bobot">Bobot</label>
+                                <input type="number" step="0.01" id="bobot" name="bobot"
+                                    class="form-control @error('bobot') is-invalid @enderror" value="{{ $data->bobot }}">
                             </div>
+                        </div>
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="jenis">Jenis <span class="text-danger">*</span></label>
-                                <select name="jenis" class="form-control">
-                                    <option value="">-- Pilih Jenis --</option>
-                                    <option value="cost">Cost</option>
-                                    <option value="benefit">Benefit</option>
+                                <label for="tipe_data">Tipe</label>
+                                <select id="tipe_data" name="tipe_data" class="select2bs4 form-control @error('tipe_data') is-invalid @enderror">
+                                    <option value="">-- Pilih Tipe --</option>
+                                    <option @if("Float"==$data->tipe_data) selected @endif value="Float">Float</option>
+                                    <option @if("Crips"==$data->tipe_data) selected @endif value="Crips">Crips</option>
+                                    <option @if("Integer"==$data->tipe_data) selected @endif value="Integer">Integer</option>
                                 </select>
-                                @if ($errors->has('jenis'))
-                                <div class="text-danger">{{ ucfirst(trans($errors->first('jenis'))) }}</div>
-                                @endif
                             </div>
+                        </div>
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="bobot">Bobot <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" value="{{ old('bobot')}}" name="bobot" placeholder="Bobot Kriteria">
-                                @if ($errors->has('bobot'))
-                                <div class="text-danger">{{ ucfirst(trans($errors->first('bobot'))) }}</div>
-                                @endif
+                                <label for="crips_id">Crips (Optional)</label>
+                                <select id="crips_id" name="crips_id" class="select2bs4 form-control">
+                                    <option value="">-- Pilih Crips --</option>
+                                    @foreach ($crips as $d)
+                                        <option @if($d->id==$data->crips_id) selected @endif value="{{ $data->id }}">{{ $data->nama_crips }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <div class="col-sm-10 offset-sm-1">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </div>
             </form>
