@@ -61,12 +61,9 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/prodi/execute/{id}', [ProdiController::class,'execute'])->name('prodi.execute');
         });
 
-
-
         Route::resource('jurusan', JurusanController::class);
         Route::POST('/jurusan/update/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
         Route::GET('/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
-
 
         Route::resource('prodi', ProdiController::class);
         Route::GET('/prodi/destroy/{id}', [ProdiController::class, 'destroy'])->name('prodi.destroy');
@@ -86,5 +83,9 @@ Route::middleware(['auth'])->group(function () {
         Route::GET('/atr-saw/hasil', [SAWController::class, 'sample'])->name('atr-saw.sample');
         Route::GET('/atr-saw/hasil2', [SAWController::class, 'sample2'])->name('atr-saw.sample2');
         Route::GET('/atr-saw/hasil3', [SAWController::class, 'sample3'])->name('atr-saw.sample3');
+    });
+
+    Route::middleware(['mahasiswa'])->group(function (){
+
     });
 });
