@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\SawController;
 use App\Http\Controllers\CripsDetailController;
+use App\Http\Controllers\BerandaController;
 
 
 /*
@@ -25,9 +26,7 @@ use App\Http\Controllers\CripsDetailController;
 |
 */
 
-Route::get('/', function () {
-    return view('home.beranda');
-});
+Route::GET('/', [BerandaController::class, 'index'])->name('beranda.index');
 
 Auth::routes();
 
@@ -85,6 +84,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/atribut', AtributController::class);
         Route::GET('/atr-saw', [SAWController::class, 'index'])->name('atr-saw.index');
         Route::GET('/atr-saw/hasil', [SAWController::class, 'sample'])->name('atr-saw.sample');
-        Route::GET('/atr-saw/hasil2', [SAWController::class, 'sample'])->name('atr-saw.sample');
+        Route::GET('/atr-saw/hasil2', [SAWController::class, 'sample2'])->name('atr-saw.sample2');
+        Route::GET('/atr-saw/hasil3', [SAWController::class, 'sample3'])->name('atr-saw.sample3');
     });
 });

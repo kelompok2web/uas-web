@@ -3,7 +3,7 @@
     Data Penilaian 
 @endsection
 @section('page')
-    
+<li class="breadcrumb-item active">Tahap Dasar</li>
 @endsection
 @section('content')
 
@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    <div class="mt-4 col-md-12">
+    {{-- <div class="mt-4 col-md-12">
         <div class="card">
 
             <div class="card-header">
@@ -156,7 +156,7 @@
                 
             </div>
         </div>
-    </div>
+    </div> --}}
 
    
 </div>
