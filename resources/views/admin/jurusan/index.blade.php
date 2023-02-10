@@ -30,37 +30,38 @@
                     @endif
                 </div>
 
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Jurusan</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($jurusan as $data)
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $data->nama_jurusan }}</td>
-                                <td>
-                                    <form action="{{ route('jurusan.destroy', $data->id) }}"method="GET">
-                                        @csrf
-                                        @method('delete')
-                                        <a href="" class="btn btn-info btn-sm mt-2"><i
-                                                class="nav-icon fas fa-id-card"></i></a>
-                                        <a href="{{ route('jurusan.edit', $data->id) }}"class="btn btn-success btn-sm mt-2"><i
-                                                class="nav-icon fas fa-edit"></i></a>
-                                        <button class="btn btn-danger btn-sm mt-2"
-                                            onclick="return confirm('Apakah yakin menghapus data ini?');"><i
-                                                class="nav-icon fas fa-trash-alt"></i></button>
-                                    </form>
-                                </td>
+                                <th>No.</th>
+                                <th>Nama Jurusan</th>
+                                <th>Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-
+                        </thead>
+                        <tbody>
+                            @foreach ($jurusan as $data)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $data->nama_jurusan }}</td>
+                                    <td>
+                                        <form action="{{ route('jurusan.destroy', $data->id) }}"method="GET">
+                                            @csrf
+                                            @method('delete')
+                                            <a href="" class="btn btn-info btn-sm mt-2"><i
+                                                    class="nav-icon fas fa-id-card"></i></a>
+                                            <a href="{{ route('jurusan.edit', $data->id) }}"class="btn btn-success btn-sm mt-2"><i
+                                                    class="nav-icon fas fa-edit"></i></a>
+                                            <button class="btn btn-danger btn-sm mt-2"
+                                                onclick="return confirm('Apakah yakin menghapus data ini?');"><i
+                                                    class="nav-icon fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- /.card-body -->

@@ -30,38 +30,40 @@
                     @endif
                 </div>
 
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Crips</th>
-                            <th>Deskripsi</th>
-                            <th>Kelompok</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($cd as $item)
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->crips->nama_crips }}</td>
-                                <td>{{ $item->deskripsi }}</td>
-                                <td>{{ $item->kelompok }}</td>
-                                <td>
-                                    <form action="{{ route('cripsdetail.destroy', $item->id) }}"method="Post">
-                                        @csrf
-                                        @method('delete')
-                                        <a href="{{ route('cripsdetail.edit', $item->id) }}"class="btn btn-success btn-sm mt-2"><i
-                                                class="nav-icon fas fa-edit"></i></a>
-                                        <button class="btn btn-danger btn-sm mt-2"
-                                            onclick="return confirm('Apakah yakin menghapus data ini?');"><i
-                                                class="nav-icon fas fa-trash-alt"></i></button>
-                                    </form>
-                                </td>
+                                <th>No.</th>
+                                <th>Nama Crips</th>
+                                <th>Deskripsi</th>
+                                <th>Kelompok</th>
+                                <th>Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($cd as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->crips->nama_crips }}</td>
+                                    <td>{{ $item->deskripsi }}</td>
+                                    <td>{{ $item->kelompok }}</td>
+                                    <td>
+                                        <form action="{{ route('cripsdetail.destroy', $item->id) }}"method="Post">
+                                            @csrf
+                                            @method('delete')
+                                            <a href="{{ route('cripsdetail.edit', $item->id) }}"class="btn btn-success btn-sm mt-2"><i
+                                                    class="nav-icon fas fa-edit"></i></a>
+                                            <button class="btn btn-danger btn-sm mt-2"
+                                                onclick="return confirm('Apakah yakin menghapus data ini?');"><i
+                                                    class="nav-icon fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 

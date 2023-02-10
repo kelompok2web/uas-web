@@ -30,34 +30,35 @@
                     @endif
                 </div>
 
-                
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Mahasiswa</th>
-                            @foreach($kriteria as $k)
-                                <th class="text-center align-middle">
-                                    {{$k->nama_kriteria}}
-                                </th>
-                            @endforeach
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($dataNew as $item)
-                            <tr class="text-center align-middle">
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->nim_mahasiswa }}</td>
-                                <td>{{ $item->p1 }}</td>
-                                <td>{{ $item->p2 }}</td>
-                                <td>{{ $item->p3 }}</td>
-                                <td>{{ $item->p4 }}</td>
-                                <td>{{ $item->p5 }}</td>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Mahasiswa</th>
+                                @foreach($kriteria as $k)
+                                    <th class="text-center align-middle">
+                                        {{$k->nama_kriteria}}
+                                    </th>
+                                @endforeach
                             </tr>
-                        @endforeach
+                        </thead>
+                        <tbody>
+                            @foreach ($dataNew as $item)
+                                <tr class="text-center align-middle">
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->nim_mahasiswa }}</td>
+                                    <td>{{ $item->p1 }}</td>
+                                    <td>{{ $item->p2 }}</td>
+                                    <td>{{ $item->p3 }}</td>
+                                    <td>{{ $item->p4 }}</td>
+                                    <td>{{ $item->p5 }}</td>
+                                </tr>
+                            @endforeach
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 

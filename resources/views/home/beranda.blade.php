@@ -1,54 +1,11 @@
-{{-- <!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <title>Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link href="/css/headers.css" rel="stylesheet">
-    <link href="/css/carousel.css" rel="stylesheet">
-</head>
-
-<body>
-    <header>
-
-        @include('home.nav')
-
-    </header>
-
-    <main>
-        @include('home.slide')
-
-        <div class="container">
-            <h1>Halo</h1>
-
-        </div>
-
-        <footer class="container">
-            <p class="float-end"><a href="#">Back to top</a></p>
-            <p>&copy; 2017–2022 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a
-                    href="#">Terms</a></p>
-        </footer>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-    </script>
-</body>
-
-</html> --}}
-
 <!DOCTYPE html>
 
 <html lang="en">
-	<!--begin::Head-->
 	<head>
 		<base href="" />
 		<title>SAW Beasiswa</title>
 		<meta charset="utf-8" />
-		<meta name="description" content="Perawatan Kesehatan di Rumah dengan Layanan Homecare Profesional dan Berkualitas" />
+		<meta name="description" content="Beasiswa SAW" />
 		<meta name="keywords" content="Saw" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta property="og:locale" content="en_US" />
@@ -60,7 +17,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Vendor Stylesheets(used for this page only)-->
-		
+
 		<link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<!--end::Vendor Stylesheets-->
 		<!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
@@ -76,12 +33,12 @@
 	<!--end::Head-->
 	<!--begin::Body-->
 	<body style="background-color: #ffffff;" id="kt_app_body" data-kt-app-layout="light-header" data-kt-app-header-fixed="true" data-kt-app-toolbar-enabled="true" class="app-default">
-		
+
 		<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
 			<!--begin::Page-->
 			<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
 				<div id="kt_app_header" class="app-header">
-                    
+
 					<div class="app-container container-xxl d-flex align-items-stretch justify-content-between" id="kt_app_header_container">
                         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
 							<a href="?page=index">
@@ -93,46 +50,29 @@
                                 <div class="menu menu-rounded menu-column menu-lg-row my-5 my-lg-0 align-items-stretch  fw-semibold px-2 px-lg-0" id="kt_app_header_menu" data-kt-menu="true">
                                     <div class="menu-item">
 										<a class="menu-link nav-link active py-3 px-4 px-xxl-6" href="#beranda" data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">Home</a>
-									
+
 									</div>
                                     <div class="menu-item ">
 										<a class="menu-link nav-link  py-3 px-4 px-xxl-6" href="#metode" data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
 											Metode SAW
 										</a>
-						
+
 									</div>
                                     <div class="menu-item ">
 										<a class="menu-link nav-link  py-3 px-4 px-xxl-6" href="#ranking" data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
 											Ranking SAW
 										</a>
-						
+
 									</div>
-                                    {{-- <div class="menu-item ">
-										<a class="menu-link nav-link  py-3 px-4 px-xxl-6" href="#testimoniHomecare" data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
-											Testimoni
-										</a>
-						
-									</div>
-                                    <div class="menu-item ">
-										<a class="menu-link nav-link  py-3 px-4 px-xxl-6" href="#bergabungHomecare" data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
-											Bergabung
-										</a>
-						
-									</div>
-                                    <div class="menu-item ">
-										<a class="menu-link nav-link  py-3 px-4 px-xxl-6" href="#kontakHomecare" data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
-											Kontak
-										</a>
-						
-									</div> --}}
-									<div class="d-lg-none py-3 px-4">	
+                                    
+									<div class="d-lg-none py-3 px-4">
 										<a href="/login">
 											<button type="button" class="btn rounded-pill w-100" style="color: white;background-color: #2EBBBE;">
 												Login Sekarang
 											</button>
 										</a>
 									</div>
-									
+
                                 </div>
                             </div>
                             <div class="app-navbar ">
@@ -142,27 +82,24 @@
 											Login Sekarang
 										</button>
 									</a>
-									
+
                                 </div>
                                 <div class="app-navbar-item d-lg-none ms-2 me-n3" title="Show header menu">
 									<div class="btn btn-icon btn-active-color-success w-35px h-35px" id="kt_app_header_menu_toggle">
-										<!--begin::Svg Icon | path: icons/duotune/text/txt001.svg-->
 										<span class="svg-icon svg-icon-1">
 											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 												<path d="M13 11H3C2.4 11 2 10.6 2 10V9C2 8.4 2.4 8 3 8H13C13.6 8 14 8.4 14 9V10C14 10.6 13.6 11 13 11ZM22 5V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4V5C2 5.6 2.4 6 3 6H21C21.6 6 22 5.6 22 5Z" fill="currentColor" />
 												<path opacity="0.3" d="M21 16H3C2.4 16 2 15.6 2 15V14C2 13.4 2.4 13 3 13H21C21.6 13 22 13.4 22 14V15C22 15.6 21.6 16 21 16ZM14 20V19C14 18.4 13.6 18 13 18H3C2.4 18 2 18.4 2 19V20C2 20.6 2.4 21 3 21H13C13.6 21 14 20.6 14 20Z" fill="currentColor" />
 											</svg>
 										</span>
-										<!--end::Svg Icon-->
 									</div>
 								</div>
-                                
+
                             </div>
                         </div>
 					</div>
-					<!--end::Header container-->
 				</div>
-				
+
 				<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
 					<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
 						<div class="d-flex flex-column flex-column-fluid ">
@@ -173,10 +110,10 @@
 											<div class="mb-20">
 												<div class="row position-relative">
 													<div class="col-12 col-lg-6 ">
-							
+
 														<div class="pt-10 pe-1">
 															<h1 class="mt-lg-10 mt-12 display-6 lh-sm text-bg-bold">
-																Beasiswa Menggunakan Sistem SAW Akan Memberikan Peluang Bagi Mahasiswa yang Berprestasi dan Berkualitas serta Layak  
+																Beasiswa Menggunakan Sistem SAW Akan Memberikan Peluang Bagi Mahasiswa yang Berprestasi dan Berkualitas serta Layak
 															</h1>
 															<div class="row pt-lg-15 pt-5 ">
 																<div class="col-sm-6 col-8 col-md-6 col-lg-6">
@@ -190,7 +127,7 @@
 																</div>
 															</div>
 														</div>
-														
+
 													</div>
 													<div class="col-12 col-lg-6 ps-10">
 														<div class="card border-0 ps-6 " style="background-color: transparent;">
@@ -198,11 +135,11 @@
 														</div>
 													</div>
 												</div>
-												
+
 											</div>
 										</section>
-										
-										
+
+
 									</div>
 								</div>
 								<div class="mb-20 py-20" style="background-color: #f6f6f6;">
@@ -225,7 +162,7 @@
 															</div>
 															<h2 class="fw-normal" style="color: #272727;">
 																Total Prodi di Politeknik Negeri Padang
-															</h2> 
+															</h2>
 														</div>
 														<div class="col-12 col-lg-4 mt-lg-0 mt-4">
 															<div class="fs-lg-2hx fs-2x fw-bold d-flex flex-center" style="color: #272727;">
@@ -234,7 +171,7 @@
 															<h2 class="fw-normal" style="color: #272727;">
 																Total Mahasiswa di Politeknik Negeri Padang
 															</h2>
-															 
+
 														</div>
 													</div>
 												</div>
@@ -295,7 +232,7 @@
                                                                     <p class="fs-4 ">Dengan Rij adalah rating kinerja ternormalisasi
                                                                     dari alternatif Ai pada atribut Cj; i =1,2,…m dan j
                                                                     = 1,2,…,n.
-                                                                    
+
                                                                     <br><br>
                                                                     Rumus Perankingan <br>
                                                                     <img alt="" src="assets/img/r2.png" class=" w-50 text-end pb-5 pt-5"	/>
@@ -310,11 +247,11 @@
 															</div>
 														</div>
 													</div>
-													
+
 												</div>
 											</div>
 										</section>
-										
+
 									</div>
 								</div>
 								<div id="kt_app_content_container" class="app-container container-xxl mt-5">
@@ -329,46 +266,34 @@
 														Ranking yang dikeluarkan dari kampus berdasarkan keadaan mahasiswa yang telah sesuai
 													</h4>
 													<div class="mt-4 col-md-12">
+                                                        
                                                         <div class="card card-bg">
-                                                            <div class="card-body">
+                                                            <div class="card-body justify-content-center">
                                                                 <div class="table-responsive">
-                                                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                                                        <thead class="text-center align-middle">
-                                                                            <tr  >
+                                                                    <table class="table table-bordered gy-5 gs-7 text-center" id="dataTable" width="100%" cellspacing="0">
+                                                                        <thead>
+                                                                            <tr>
                                                                                 <th>NIM</th>
-                                                                                <th>IPK</th>
-                                                                                <th>Penghasilan Ortu/bln (Juta)</th>
-                                                                                <th>Jumlah Tanggungan Orgtua</th>
-                                                                                <th>Prestasi</th>
-                                                                                <th>Kondisi Rumah</th>
                                                                                 <th>Total</th>
                                                                                 <th>Rangking</th>
                                                                             </tr>
                                                                         </thead>
-                                                                        <tbody>
+                                                                        <tbody clasas="justify-content-end text-end">
                                                                             @foreach ($DATA as $item)
-                                                                                <tr class="text-center align-middle">
+                                                                                <tr>
                                                                                     <td>{{ $item->nim_mahasiswa }}</td>
-                                                                                    <td>{{ $item->p1_level3 }}</td>
-                                                                                    <td>{{ $item->p2_level3 }}</td>
-                                                                                    <td>{{ $item->p3_level3 }}</td>
-                                                                                    <td>{{ $item->p4_level3 }}</td>
-                                                                                    <td>{{ $item->p5_level3 }}</td>
                                                                                     <td>{{ $item->pSum_level3 }}</td>
                                                                                     <td>{{ $item->ranking }}</td>
                                                                                 </tr>
                                                                             @endforeach
                                                                         </tbody>
-                                                                    
+
                                                                     </table>
                                                                 </div>
-                                                                
-                                                    
-                                                                
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
+
 												</div>
 											</div>
 										</section>
@@ -394,21 +319,19 @@
 			</div>
 		</div>
 		<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
-			<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
 			<span class="svg-icon">
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="currentColor" />
 					<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="currentColor" />
 				</svg>
 			</span>
-			<!--end::Svg Icon-->
 		</div>
 
 		<script>
 			// Add active class to the current button (highlight it)
 			var header = document.getElementById("navPage");
 			var links = header.getElementsByClassName("nav-link");
-			for (var i = 0; i < links.length; i++) 
+			for (var i = 0; i < links.length; i++)
 			{
 			  links[i].addEventListener("click", function() {
 			  var current = document.getElementsByClassName("active");
@@ -417,14 +340,13 @@
 			  });
 			}
 		</script>
-	
+
 		<script>var hostUrl = "assets/";</script>
 		<!--begin::Global Javascript Bundle(mandatory for all pages)-->
 		<script src="{{asset('assets/plugins/global/plugins.bundle.js')}}"></script>
 		<script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
-
-		<script src="{{asset('assets/plugins/custom/fslightbox/fslightbox.bundle.js')}}"></script>
-		<script src="{{asset('assets/plugins/custom/typedjs/typedjs.bundle.js')}}"></script>
+        <script src="{{asset('assets/style/custom.js')}}"></script>
+        <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 
 		<script src="{{asset('assets/js/custom/landing.js')}}"></script>
 		<script src="{{asset('assets/js/custom/pages/pricing/general.js')}}"></script>
