@@ -15,27 +15,28 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>Lever User</th>
-                    <th>Jumlah User</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($user as $role=> $data)
-                <tr>
-                    <td>{{ $role}}</td>
-                    <td>{{ $data->count() }}</td>
-                    <td>
-                        <a href="{{ route('user.show', $role) }}" class="btn btn-info btn-sm"><i class="nav-icon fas fa-search-plus"></i> &nbsp; Details</a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-          </table>
-
+          <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Lever User</th>
+                        <th>Jumlah User</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($user as $role=> $data)
+                    <tr>
+                        <td>{{ $role}}</td>
+                        <td>{{ $data->count() }}</td>
+                        <td>
+                            <a href="{{ route('user.show', $role) }}" class="btn btn-info btn-sm"><i class="nav-icon fas fa-search-plus"></i> &nbsp; Details</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+              </table>
+          </div>
         </div>
 
         <!-- /.card-body -->

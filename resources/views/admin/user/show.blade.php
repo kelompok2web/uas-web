@@ -16,47 +16,48 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    @foreach ($role as $d => $data)
-                        @if ($d == 'Mahasiswa')
-                            <th>NIM</th>
-                        @endif
-                    @endforeach
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if ($user->count() > 0)
-                    @foreach ($user as $data)
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td class="text-capitalize">{{ $data->name }}</td>
-                            <td>{{ $data->email }}</td>
-                            @if ($data->role == 'Mahasiswa')
-                            <td>{{ $data->nim_mahasiswa }}</td>
-                            @endif
-                            <td>
-                                <form action="{{ route('user.destroy', $data->id) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
-                                </form>
-                            </td>
+                            <th>No.</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            @foreach ($role as $d => $data)
+                                @if ($d == 'Mahasiswa')
+                                    <th>NIM</th>
+                                @endif
+                            @endforeach
+                            <th>Aksi</th>
                         </tr>
-                    @endforeach
-                @else
-                    <tr>
-                        <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Silahkan Buat Akun Terlebih Dahulu!</td>
-                    </tr>
-                @endif
-            </tbody>
-          </table>
-
+                    </thead>
+                    <tbody>
+                        @if ($user->count() > 0)
+                            @foreach ($user as $data)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td class="text-capitalize">{{ $data->name }}</td>
+                                    <td>{{ $data->email }}</td>
+                                    @if ($data->role == 'Mahasiswa')
+                                    <td>{{ $data->nim_mahasiswa }}</td>
+                                    @endif
+                                    <td>
+                                        <form action="{{ route('user.destroy', $data->id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Silahkan Buat Akun Terlebih Dahulu!</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- /.card-body -->

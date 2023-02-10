@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     <link href="{{ asset('template/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('sweetalert2/dist/sweetalert2.min.css') }}">
-
+    <link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
     
 
     <!-- PWA  -->
@@ -125,10 +125,6 @@
     <script src="{{ asset('template/plugins/chart.js/Chart.min.js')}}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{ asset('template/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('template/js/demo/chart-pie-demo.js') }}"></script>
-    <script src="{{ asset('sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
-    <script src="{{ asset('sweetalert2/dist/sweetalert2.min.js')}}"></script>
 
 
     <!-- Page level custom scripts -->

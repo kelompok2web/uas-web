@@ -26,41 +26,42 @@
                         </div>
                     @endif
                 </div>
-
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Kriteria</th>
-                            <th>Bobot (%)</th>
-                            <th>Tipe</th>
-                            <th>Data Crips</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($kriteria as $item)
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->nama_kriteria }}</td>
-                                <td>{{ $item->bobot }}</td>
-                                <td>{{ $item->tipe_data }}</td>
-                                <td>{{ $item->crips_id? :'Tidak ada' }}</td>
-                                <td>
-                                    <form action="{{ route('kriteria.destroy', $item->id) }}"method="Post">
-                                        @csrf
-                                        @method('delete')
-                                        <a href="#"class="btn btn-success btn-sm mt-2"><i
-                                                class="nav-icon fas fa-edit"></i></a>
-                                        <button class="btn btn-danger btn-sm mt-2"
-                                            onclick="return confirm('Apakah yakin menghapus data ini?');"><i
-                                                class="nav-icon fas fa-trash-alt"></i></button>
-                                    </form>
-                                </td>
+                                <th>No.</th>
+                                <th>Nama Kriteria</th>
+                                <th>Bobot (%)</th>
+                                <th>Tipe</th>
+                                <th>Data Crips</th>
+                                <th>Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($kriteria as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->nama_kriteria }}</td>
+                                    <td>{{ $item->bobot }}</td>
+                                    <td>{{ $item->tipe_data }}</td>
+                                    <td>{{ $item->crips_id? :'Tidak ada' }}</td>
+                                    <td>
+                                        <form action="{{ route('kriteria.destroy', $item->id) }}"method="Post">
+                                            @csrf
+                                            @method('delete')
+                                            <a href="#"class="btn btn-success btn-sm mt-2"><i
+                                                    class="nav-icon fas fa-edit"></i></a>
+                                            <button class="btn btn-danger btn-sm mt-2"
+                                                onclick="return confirm('Apakah yakin menghapus data ini?');"><i
+                                                    class="nav-icon fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
