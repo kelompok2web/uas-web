@@ -86,5 +86,6 @@ Route::middleware(['auth'])->group(function () {
         Route::GET('/atr-saw/hasil', [SAWController::class, 'sample'])->name('atr-saw.sample');
         Route::GET('/atr-saw/hasil2', [SAWController::class, 'sample2'])->name('atr-saw.sample2');
         Route::GET('/atr-saw/hasil3', [SAWController::class, 'sample3'])->name('atr-saw.sample3');
+        Route::GET('/atr-saw/hasil3PDF', [SAWController::class, 'sample3PDF'])->name('atr-saw.sample3PDF');
     });
 });

@@ -1,4 +1,4 @@
-@extends('frontend.home')
+@extends('frontend.homepdf')
 @section('heading')
     Data Penilaian 
 @endsection
@@ -9,20 +9,33 @@
 
 <div class="mt-4 col-md-12">
     <div class="card">
-
-        <div class="card-header">
-            <h3 class="card-title ">
-                Tahap Perankingan
-                <a type="button" href="{{ route('atr-saw.sample3PDF') }}" target="_blank" class="btn btn-primary btn-sm">
-                    <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Cetak
-                </a>
-            </h3>
-        </div>
-
-
         <div class="card-body">
+            <div class="row">
+           <div class="col-12 mb-3">
+            <div class="row">
+                <div class="col-auto">
+                    <img alt="" src="/assets/img/pnp.png" style="width:100px"/>
+                </div>
+                <div class="col text-center">
+                    <br>
+                    <h1>
+                        Data Nama Mahasiswa Beasiswa 
+                    </h1>
+                    <h1>
+                        Politeknik Negeri Padang 
+                    </h1>
+                </div>
+            </div>
             
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+           </div>
+           
+           <div class="col-12">
+            {{-- <h2>
+                Tahap Perankingan
+            </h2> --}}
+           </div>
+           <div class="col-12">
+            <table class="table table-bordered" width="100%" cellspacing="0">
                 <thead class="text-center align-middle">
                     <tr  >
                         <th>NIM</th>
@@ -51,6 +64,8 @@
                 </tbody>
             
             </table>
+           </div>
+        </div>
 
             
         </div>
