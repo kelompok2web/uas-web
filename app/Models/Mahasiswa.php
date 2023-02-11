@@ -51,6 +51,11 @@ class Mahasiswa extends Model
         return $data;
     }
 
+    public function ranking($id)
+    {
+        $nilai = Atribut::where('mahasiswa_id', $id)->first();
+        return $nilai;
+    }
 
 
     protected $table = 'mahasiswa';

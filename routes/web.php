@@ -79,14 +79,14 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/crips', CripsController::class);
         Route::resource('/cripsdetail', CripsDetailController::class);
         Route::resource('/atribut', AtributController::class);
-        Route::GET('/atr-saw', [SAWController::class, 'index'])->name('atr-saw.index');
-        Route::GET('/atr-saw/hasil', [SAWController::class, 'sample'])->name('atr-saw.sample');
-        Route::GET('/atr-saw/hasil2', [SAWController::class, 'sample2'])->name('atr-saw.sample2');
-        Route::GET('/atr-saw/hasil3', [SAWController::class, 'sample3'])->name('atr-saw.sample3');
-        Route::GET('/atr-saw/hasil3PDF', [SAWController::class, 'sample3PDF'])->name('atr-saw.sample3PDF');
+        Route::GET('/atr-saw', [SAWController::class, 'indexC'])->name('atr-saw.indexC');
+        Route::GET('/atr-saw/hasil', [SAWController::class, 'sampleC'])->name('atr-saw.sampleC');
+        Route::GET('/atr-saw/hasil2', [SAWController::class, 'sample2C'])->name('atr-saw.sample2C');
+        Route::GET('/atr-saw/hasil3', [SAWController::class, 'sample3C'])->name('atr-saw.sample3C');
+        Route::GET('/atr-saw/hasil3PDF', [SAWController::class, 'sample3PDFC'])->name('atr-saw.sample3PDFC');
     });
 
     Route::middleware(['mahasiswa'])->group(function (){
-
+        Route::GET('/atr-saw/mhs/hasil', [SAWController::class, 'mahasiswaC'])->name('atr-saw.mahasiswaC');
     });
 });
