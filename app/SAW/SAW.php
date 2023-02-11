@@ -6,6 +6,7 @@ use App\Models\Prodi;
 use App\Models\Atribut;
 use App\Models\Kriteria;
 use Barryvdh\DomPDF\Facade\Pdf;
+use DB;
 use Auth;
 
 class SAW
@@ -346,7 +347,7 @@ class SAW
  
         $COUNTING_DATA = ['p1', 'p2', 'p3', 'p4', 'p5'];
         $COUNTING_DATA_MIN_MAX = ['MAX', 'MIN', 'MAX', 'MAX', 'MIN'];
-        $BOBOT = [0.25, 0.15, 0.20, 0.30, 0.10];
+        $BOBOT = DB::table('kriteria')->pluck('bobot')->toArray();
  
         // return $DATA;
         
@@ -637,7 +638,7 @@ class SAW
         // return $pdf->download('saw.pdf');
         return view('admin.saw.hasil3pdf', $sent);
     }
-
+    
     public function mahasiswa(){
         $MHS = Mahasiswa::where('nim_mahasiswa', Auth::user()->nim_mahasiswa)->first();
         $PRODI = Prodi::findorfail($MHS->prodi_id);

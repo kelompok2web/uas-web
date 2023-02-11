@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Mahasiswa;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -130,4 +131,114 @@ class UserController extends Controller
     {
         //
     }
+
+    public function profile()
+    {
+        return view('user.pengaturan');
+    }
+
+    public function edit_profile()
+    {
+        $prodi = Prodi::all();
+        return view('user.profile', compact('prodi'));
+    }
+
+    public function ubah_profile(Request $request)
+    {
+        if ($request->user()->role == 'Mahasiswa')
+        {
+            // $this->validate($request, [
+            //     'nama_guru' => 'required',
+            //     'id_mapel' => 'required',
+            //     'jk' => 'required',
+            // ]);
+    
+            $mhs = Mahasiswa::where('nim_mahasiswa', Auth::user()->nim_mahasiswa)->first();
+            $user = User::where('nim_mahasiswa', Auth::user()->nim_mahasiswa)->first();
+            if ($user) {
+                $user_data = [
+                    'name' => $request->name
+                ];
+                $user->update($user_data);
+            } 
+            $mhs_data = [
+                'nama_mahasiswa' => $request->name,
+                'jk' => $request->jk,
+                'tmp_lahir' => $request->tmp_lahir,
+                'tgl_lahir' => $request->tgl_lahir
+            ];
+            $mhs->update($mhs_data);
+    
+            return redirect('profile')->with('success', 'Data Mahasiswa berhasil diperbarui!');
+            
+        }
+        
+        else
+        {
+            $user = User::findorfail(Auth::user()->id);
+            $data_user = [
+                'name' => $request->name,
+            ];
+            $user->update($data_user);
+            return redirect('profile')->with('success', 'Profile anda berhasil diperbarui!');
+        }
+    }
+
+    public function edit_password()
+    {
+        return view('user.ubah-password');
+    }
+
+    public function ubah_password(Request $request)
+    {
+        $this->validate($request, [
+            'password' => 'required|string|min:8|confirmed'
+        ]);
+        $user = User::findorfail(Auth::user()->id);
+        if ($request->password_lama) {
+            if (Hash::check($request->password_lama, $user->password)) {
+                if ($request->password_lama == $request->password) {
+                    return redirect()->back()->with('error', 'Maaf password yang anda masukkan sama!');
+                } else {
+                    $user_password = [
+                        'password' => Hash::make($request->password),
+                    ];
+                    $user->update($user_password);
+                    return redirect()->back()->with('success', 'Password anda berhasil diperbarui!');
+                }
+            } else {
+                return redirect()->back()->with('error', 'Masukkan password lama anda dengan benar!');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Masukkan password lama anda terlebih dahulu!');
+        }
+
+        return redirect('profile')->with('success', 'Data password berhasil diperbarui!');
+    }
+
+
+    public function edit_email()
+    {
+        return view('user.ubah-email');
+    }
+
+    public function ubah_email(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|string|email'
+        ]);
+        $user = User::findorfail(Auth::user()->id);
+        $cekUser = User::where('email', $request->email)->count();
+        if ($cekUser >= 1) {
+            return redirect()->back()->with('error', 'Maaf email ini sudah terdaftar!');
+        } else {
+            $user_email = [
+                'email' => $request->email,
+            ];
+            $user->update($user_email);
+            return redirect('profile')->with('success', 'Email anda berhasil diperbarui!');
+        }
+    }
+
+
 }

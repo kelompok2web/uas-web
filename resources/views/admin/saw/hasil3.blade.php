@@ -13,7 +13,7 @@
         <div class="card-header">
             <h3 class="card-title ">
                 Tahap Perankingan
-                <a type="button" href="{{ route('atr-saw.sample3PDF') }}" target="_blank" class="btn btn-primary btn-sm">
+                <a type="button" href="{{ route('atr-saw.sample3PDFC') }}" target="_blank" class="btn btn-primary btn-sm">
                     <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Cetak
                 </a>
             </h3>

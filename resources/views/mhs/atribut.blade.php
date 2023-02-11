@@ -64,6 +64,45 @@
 
     </div>
 
+    <div class="mt-4 col-md-12">
+        <div class="card">
+
+            <div class="card-header">
+                <h3 class="card-title ">
+                    Penjelasan Crips
+                </h3>
+            </div>
+
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Crips</th>
+                                <th>Deskripsi</th>
+                                <th>Kelompok</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($cd as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->crips->nama_crips }}</td>
+                                    <td>{{ $item->deskripsi }}</td>
+                                    <td>{{ $item->kelompok }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="modal fade " id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
@@ -75,7 +114,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('atribut.store')}}" method="POST">
+                    <form action="{{route('atr-saw.store')}}" method="POST">
                         @csrf
                         <div class="row">
 
@@ -85,7 +124,7 @@
                                     <select id="mahasiswa_id" name="mahasiswa_id" class="select2bs4 form-control @error('mahasiswaa_id') is-invalid @enderror" required>
                                         <option value="">-- Pilih Mahasiswa --</option>
                                         @foreach ($mhs as $data)
-                                            <option value="{{ $data->id }}">{{ $data->nim_mahasiswa }}</option>
+                                        <option @if(Auth::user()->id == $data->id) selected  @endif value="{{ $data->id }}">{{ $data->nim_mahasiswa }}</option>
                                         @endforeach
                                     </select>
                                 </div>

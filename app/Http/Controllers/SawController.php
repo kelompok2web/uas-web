@@ -9,6 +9,7 @@ use App\Models\Prodi;
 use App\Models\Atribut;
 use App\Models\Kriteria;
 use Barryvdh\DomPDF\Facade\Pdf;
+use DB;
 use Auth;
 
 
@@ -51,5 +52,11 @@ class SAWController extends Controller
     public function mahasiswaC(){
         $saw = new SAW;
         return $saw->mahasiswa();
+    }
+
+    function test(){
+        $DATA = DB::table('kriteria')->pluck('bobot')->toArray();
+        return $DATA;
+        
     }
 }

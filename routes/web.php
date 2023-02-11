@@ -42,6 +42,14 @@ Route::get('/logout', function(){
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [UserController::class,'profile'])->name('profile');
+    Route::get('/pengaturan/profile', [UserController::class,'edit_profile']) ->name('pengaturan.profile');
+    Route::post('/pengaturan/ubah-profile', [UserController::class,'ubah_profile']) ->name('pengaturan.ubah-profile');
+    Route::get('/pengaturan/edit-password', [UserController::class,'edit_password']) ->name('pengaturan.edit-password');
+    Route::post('/pengaturan/ubah-password', [UserController::class,'ubah_password']) ->name('pengaturan.ubah-password');
+    Route::get('/pengaturan/edit-email', [UserController::class,'edit_email']) ->name('pengaturan.edit-email');
+    Route::post('/pengaturan/ubah-email', [UserController::class,'ubah_email']) ->name('pengaturan.ubah-email');
+     
     Route::middleware(['admin'])->group(function () {
         Route::middleware(['trash'])->group(function (){
             Route::get('/admin/mahasiswa/trash', [MahasiswaController::class,'trash'])->name('mahasiswa.trash');
@@ -84,9 +92,13 @@ Route::middleware(['auth'])->group(function () {
         Route::GET('/atr-saw/hasil2', [SAWController::class, 'sample2C'])->name('atr-saw.sample2C');
         Route::GET('/atr-saw/hasil3', [SAWController::class, 'sample3C'])->name('atr-saw.sample3C');
         Route::GET('/atr-saw/hasil3PDF', [SAWController::class, 'sample3PDFC'])->name('atr-saw.sample3PDFC');
+
+        Route::GET('/atr-test', [SAWController::class, 'test'])->name('atr-saw.test');
     });
 
     Route::middleware(['mahasiswa'])->group(function (){
         Route::GET('/atr-saw/mhs/hasil', [SAWController::class, 'mahasiswaC'])->name('atr-saw.mahasiswaC');
+        Route::POST('/atr-saw/mhs/atribut', [AtributController::class, 'store2'])->name('atr-saw.store');
+        Route::GET('/atr-saw/mhs/index', [AtributController::class, 'index2'])->name('atr-saw.index');
     });
 });
