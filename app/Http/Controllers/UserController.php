@@ -204,7 +204,7 @@ class UserController extends Controller
                         'password' => Hash::make($request->password),
                     ];
                     $user->update($user_password);
-                    return redirect()->back()->with('success', 'Password anda berhasil diperbarui!');
+                    return redirect('profile')->with('success', 'Password anda berhasil diperbarui!');
                 }
             } else {
                 return redirect()->back()->with('error', 'Masukkan password lama anda dengan benar!');
@@ -212,8 +212,7 @@ class UserController extends Controller
         } else {
             return redirect()->back()->with('error', 'Masukkan password lama anda terlebih dahulu!');
         }
-
-        return redirect('profile')->with('success', 'Data password berhasil diperbarui!');
+        
     }
 
 
