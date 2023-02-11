@@ -20,23 +20,23 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead class="text-center align-middle">
                         <tr  >
-                            <th>NIM</th>
-                            <th>IPK</th>
-                            <th>Penghasilan Ortu/bln (Juta)</th>
-                            <th>Jumlah Tanggungan Orgtua</th>
-                            <th>Prestasi</th>
-                            <th>Kondisi Rumah</th>
+                            <th class="text-center align-middle">NIM</th>
+                            <th class="text-center align-middle">IPK</th>
+                            <th class="text-center align-middle">Penghasilan Ortu/bln (Juta)</th>
+                            <th class="text-center align-middle">Jumlah Tanggungan Orgtua</th>
+                            <th class="text-center align-middle">Prestasi</th>
+                            <th class="text-center align-middle">Kondisi Rumah</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($DATA as $item)
                             <tr class="text-center align-middle">
-                                <td>{{ $item->nim_mahasiswa }}</td>
-                                <td>{{ $item->p1_level2 }}</td>
-                                <td>{{ $item->p2_level2 }}</td>
-                                <td>{{ $item->p3_level2 }}</td>
-                                <td>{{ $item->p4_level2 }}</td>
-                                <td>{{ $item->p5_level2 }}</td>
+                                <td class="text-center align-middle">{{ $item->nim_mahasiswa }}</td>
+                                <td class="text-center align-middle">{{ $item->p1_level2 }}</td>
+                                <td class="text-center align-middle">{{ $item->p2_level2 }}</td>
+                                <td class="text-center align-middle">{{ $item->p3_level2 }}</td>
+                                <td class="text-center align-middle">{{ $item->p4_level2 }}</td>
+                                <td class="text-center align-middle">{{ $item->p5_level2 }}</td>
                             </tr>
                         @endforeach
                     </tbody>

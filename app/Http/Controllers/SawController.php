@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use App\Models\Atribut;
 use App\Models\Kriteria;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class SAWController extends Controller
 {
@@ -632,6 +633,8 @@ class SAWController extends Controller
             "BOBOT" => $BOBOT,
         ];
         // return $sent;
+        // $pdf = PDF::loadView('admin.saw.hasil3pdf', $sent);
+        // return $pdf->download('saw.pdf');
         return view('admin.saw.hasil3pdf', $sent);
     }
 }

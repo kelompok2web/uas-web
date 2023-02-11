@@ -273,17 +273,17 @@
                                                                     <table class="table table-bordered gy-5 gs-7 text-center" id="dataTable" width="100%" cellspacing="0">
                                                                         <thead>
                                                                             <tr>
-                                                                                <th>NIM</th>
-                                                                                <th>Total</th>
-                                                                                <th>Rangking</th>
+                                                                                <th class="text-center align-middle">NIM</th>
+                                                                                <th class="text-center align-middle">Total</th>
+                                                                                <th class="text-center align-middle">Rangking</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody clasas="justify-content-end text-end">
                                                                             @foreach ($DATA as $item)
                                                                                 <tr>
-                                                                                    <td>{{ $item->nim_mahasiswa }}</td>
-                                                                                    <td>{{ $item->pSum_level3 }}</td>
-                                                                                    <td>{{ $item->ranking }}</td>
+                                                                                    <td class="text-center align-middle">{{ $item->nim_mahasiswa }}</td>
+                                                                                    <td class="text-center align-middle">{{ $item->pSum_level3 }}</td>
+                                                                                    <td class="text-center align-middle">{{ $item->ranking }}</td>
                                                                                 </tr>
                                                                             @endforeach
                                                                         </tbody>

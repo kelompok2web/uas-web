@@ -34,8 +34,8 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>No.</th>
-                                <th>Nama Mahasiswa</th>
+                                <th class="text-center align-middle">No.</th>
+                                <th class="text-center align-middle">Nama Mahasiswa</th>
                                 @foreach($kriteria as $k)
                                     <th class="text-center align-middle">
                                         {{$k->nama_kriteria}}
@@ -46,13 +46,13 @@
                         <tbody>
                             @foreach ($dataNew as $item)
                                 <tr class="text-center align-middle">
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->nim_mahasiswa }}</td>
-                                    <td>{{ $item->p1 }}</td>
-                                    <td>{{ $item->p2 }}</td>
-                                    <td>{{ $item->p3 }}</td>
-                                    <td>{{ $item->p4 }}</td>
-                                    <td>{{ $item->p5 }}</td>
+                                    <td class="text-center align-middle">{{ $loop->iteration }}</td>
+                                    <td class="text-center align-middle">{{ $item->nim_mahasiswa }}</td>
+                                    <td class="text-center align-middle">{{ $item->p1 }}</td>
+                                    <td class="text-center align-middle">{{ $item->p2 }}</td>
+                                    <td class="text-center align-middle">{{ $item->p3 }}</td>
+                                    <td class="text-center align-middle">{{ $item->p4 }}</td>
+                                    <td class="text-center align-middle">{{ $item->p5 }}</td>
                                 </tr>
                             @endforeach
 
