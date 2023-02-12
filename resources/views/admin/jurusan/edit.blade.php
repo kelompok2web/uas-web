@@ -1,6 +1,6 @@
 @extends('frontend.home')
 @section('heading')
-    Data Jurusan 
+    Data Edit Jurusan 
 @endsection
 @section('page')
     

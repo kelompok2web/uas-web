@@ -1,6 +1,6 @@
 @extends('frontend.home')
 @section('heading')
-    Data Prodi
+    Data Edit Prodi
 @endsection
 @section('page')
     

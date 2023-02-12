@@ -1,7 +1,10 @@
 @extends('frontend.home')
 
-@section('title')
-Edit Kriteria
+@section('heading')
+    Data Edit Kriteria
+@endsection
+@section('page')
+    
 @endsection
 
 @section('content')
@@ -13,7 +16,7 @@ Edit Kriteria
                     <h3 class="card-title">Edit Data</h3>
                 </div>
             </div>
-            <form role="form" action="#" method="POST">
+            <form role="form" action="{{ route('kriteria.update',$data->id) }}" method="POST">
                 @csrf
                 @method('put')
                 <div class="card-body">
@@ -48,10 +51,17 @@ Edit Kriteria
                                 <label for="crips_id">Crips (Optional)</label>
                                 <select id="crips_id" name="crips_id" class="select2bs4 form-control">
                                     <option value="">-- Pilih Crips --</option>
-                                    @foreach ($crips as $d)
-                                        <option @if($d->id==$data->crips_id) selected @endif value="{{ $data->id }}">{{ $data->nama_crips }}</option>
+                                    @foreach ($crip as $d)
+                                        <option @if($d->id==$data->crips_id) selected @endif value="{{ $d->id }}">{{ $d->nama_crips }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <input type="text" id="status" name="status"
+                                    class="form-control @error('status') is-invalid @enderror" value="{{ $data->status }}">
                             </div>
                         </div>
                     </div>

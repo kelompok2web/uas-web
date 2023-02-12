@@ -121,7 +121,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="mahasiswa_id">Mahasiswa</label>
-                                    <select id="mahasiswa_id" name="mahasiswa_id" class="select2bs4 form-control @error('mahasiswaa_id') is-invalid @enderror" required>
+                                    <select  id="mahasiswa_id" name="mahasiswa_id" class="select2bs4 form-control @error('mahasiswaa_id') is-invalid @enderror" required>
                                         <option value="">-- Pilih Mahasiswa --</option>
                                         @foreach ($mhs as $data)
                                         <option @if(Auth::user()->id == $data->id) selected  @endif value="{{ $data->id }}">{{ $data->nim_mahasiswa }}</option>
