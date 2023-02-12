@@ -1,0 +1,54 @@
+.radius-custom{
+    border-radius:24px;
+    padding: 16px 24px;
+}
+body{
+    font-family: Poppins
+}
+
+.text-landing{
+    font-family: Inter;
+    font-style: bold;
+    font-size: 55px;
+}
+
+.text-landing2{
+    font-family: Inter;
+    font-style: bold;
+    font-size: 48px;
+}
+.appstraining-icon{
+    font-size: 20px;
+    font-family: Inter;
+    color: #707070;
+}
+.callout-tranparent {
+    background-color: transparent;
+    border-left:8px solid  #01A9A0 ;
+    width: 100%;
+    height: 50px;
+  }
+
+.card-bg{
+    background-color: #F6F6F6;
+}
+.text-bg{
+    color: rgba(0, 0, 0, 0.7);
+}
+.text-bg-bold{
+    color: rgba(0, 0, 0, 0.8);
+}
+.border-custom{
+    border-color: rgba(46, 187, 190, 1);
+}
+  
+.color-text{
+    color: #2EBBBE;
+}
+
+.menu-hover:hover{
+
+color:#01A9A0;
+}
+
+  

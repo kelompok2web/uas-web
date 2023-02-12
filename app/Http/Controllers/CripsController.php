@@ -63,7 +63,7 @@ class CripsController extends Controller
      * @param  \App\Models\Crips  $crips
      * @return \Illuminate\Http\Response
      */
-    public function edit(Crips $crips, $id)
+    public function edit($id)
     {
         $item = Crips::find($id);
         $crips = Crips::orderBy('nama_crips')->get();
@@ -82,14 +82,14 @@ class CripsController extends Controller
      * @param  \App\Models\Crips  $crips
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Crips $crips, $id)
+    public function update(Request $request, $id)
     {
 
         $item = Crips::find($id);
         $item->nama_crips=$request->nama_crips;
         $item->save();
 
-       return redirect()->back()->with('success', 'Berhasil update data crips!');
+       return redirect('/crips')->with('success', 'Berhasil update data crips!');
 
     }
 
@@ -99,11 +99,11 @@ class CripsController extends Controller
      * @param  \App\Models\Crips  $crips
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Crips $crips, $id)
+    public function destroy($id)
     {
         $item=Crips::find($id);
         $item->delete();
-        return redirect()->back()->with('success', 'Berhasil menghapus data crips!');
+        return redirect('/crips')->with('success', 'Berhasil menghapus data crips!');
 
     }
 }

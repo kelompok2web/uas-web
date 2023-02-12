@@ -1,5 +1,10 @@
 @extends('frontend.home')
-
+@section('heading')
+    Data Kriteria
+@endsection
+@section('page')
+<li class="breadcrumb-item active">Data Kriteria</li>
+@endsection
 @section('content')
     <div class="col-md-12">
         <div class="card">
@@ -21,30 +26,42 @@
                         </div>
                     @endif
                 </div>
-
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Kode</th>
-                            <th>Nama Kriteria</th>
-                            <th>Jenis</th>
-                            <th>Bobot</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($kriteria as $item)
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->kode }}</td>
-                                <td>{{ $item->nama }}</td>
-                                <td>{{ $item->jenis }}</td>
-                                <td>{{ $item->bobot }}</td>
+                                <th>No.</th>
+                                <th>Nama Kriteria</th>
+                                <th>Bobot (%)</th>
+                                <th>Tipe</th>
+                                <th>Data Crips</th>
+                                <th>Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($kriteria as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->nama_kriteria }}</td>
+                                    <td>{{ $item->bobot }}</td>
+                                    <td>{{ $item->tipe_data }}</td>
+                                    <td>{{ $item->crips_id? :'Tidak ada' }}</td>
+                                    <td>
+                                        <form action="{{ route('kriteria.destroy', $item->id) }}"method="Post">
+                                            @csrf
+                                            @method('delete')
+                                            <a href="#"class="btn btn-success btn-sm mt-2"><i
+                                                    class="nav-icon fas fa-edit"></i></a>
+                                            <button class="btn btn-danger btn-sm mt-2"
+                                                onclick="return confirm('Apakah yakin menghapus data ini?');"><i
+                                                    class="nav-icon fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -66,31 +83,40 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="kode">Kode Kriteria</label>
-                                    <input type="text" id="kode" name="kode"
-                                        class="form-control @error('kode') is-invalid @enderror" required autofocus>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="nama">Nama Kriteria</label>
-                                    <input type="text" id="nama" name="nama"
-                                        class="form-control @error('nama') is-invalid @enderror" required>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="jenis">Jenis</label>
-                                    <input type="text" id="jenis" name="jenis"
-                                        class="form-control @error('jenis') is-invalid @enderror" required>
+                                    <label for="nama_kriteria">Nama Kriteria</label>
+                                    <input type="text" id="nama_kriteria" name="nama_kriteria"
+                                        class="form-control @error('nama_kriteria') is-invalid @enderror" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="bobot">Bobot</label>
-                                    <input type="text" id="bobot" name="bobot"
-                                        class="form-control @error('bobot') is-invalid @enderror" required>
+                                    <input type="number" step="0.01" id="bobot" name="bobot"
+                                        class="form-control @error('kode') is-invalid @enderror" required autofocus>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tipe_data">Tipe</label>
+                                    <select id="tipe_data" name="tipe_data" class="select2bs4 form-control @error('tipe_data') is-invalid @enderror" required>
+                                        <option value="">-- Pilih Tipe --</option>
+                                        <option value="Float">Float</option>
+                                        <option value="Crips">Crips</option>
+                                        <option value="Integer">Integer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="crips_id">Crips (Optional)</label>
+                                    <select id="crips_id" name="crips_id" class="select2bs4 form-control">
+                                        <option value="">-- Pilih Crips --</option>
+                                        @foreach ($crips as $data)
+                                            <option value="{{ $data->id }}">{{ $data->nama_crips }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>

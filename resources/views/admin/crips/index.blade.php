@@ -1,5 +1,10 @@
 @extends('frontend.home')
-
+@section('heading')
+    Data Crips
+@endsection
+@section('page')
+<li class="breadcrumb-item active">Data Crips</li>
+@endsection
 @section('content')
     <div class="col-md-12">
         <div class="card">
@@ -24,37 +29,38 @@
                         </div>
                     @endif
                 </div>
-
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Crips</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($crips as $item)
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->nama_crips }}</td>
-                                <td>
-                                    <form action="{{ route('crips.destroy', $item->id) }}"method="GET">
-                                        @csrf
-                                        @method('delete')
-                                        <a href="" class="btn btn-info btn-sm mt-2"><i
-                                                class="nav-icon fas fa-id-card"></i></a>
-                                        <a href="{{ route('crips.edit', $item->id) }}"class="btn btn-success btn-sm mt-2"><i
-                                                class="nav-icon fas fa-edit"></i></a>
-                                        <button class="btn btn-danger btn-sm mt-2"
-                                            onclick="return confirm('Apakah yakin menghapus data ini?');"><i
-                                                class="nav-icon fas fa-trash-alt"></i></button>
-                                    </form>
-                                </td>
+                                <th>No.</th>
+                                <th>Nama Crips</th>
+                                <th>Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($crips as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->nama_crips }}</td>
+                                    <td>
+                                        <form action="{{ route('crips.destroy', $item->id) }}"method="Post">
+                                            @csrf
+                                            @method('delete')
+                                            <a href="" class="btn btn-info btn-sm mt-2"><i
+                                                    class="nav-icon fas fa-id-card"></i></a>
+                                            <a href="{{ route('crips.edit', $item->id) }}"class="btn btn-success btn-sm mt-2"><i
+                                                    class="nav-icon fas fa-edit"></i></a>
+                                            <button class="btn btn-danger btn-sm mt-2"
+                                                onclick="return confirm('Apakah yakin menghapus data ini?');"><i
+                                                    class="nav-icon fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -62,7 +68,7 @@
 
     <div class="modal fade " id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Crips</h5>
@@ -75,7 +81,7 @@
                         @csrf
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <div class="form-group">
                                     <label for="nama_crips">Nama Crips</label>
                                     <input type="text" id="nama_crips" name="nama_crips"

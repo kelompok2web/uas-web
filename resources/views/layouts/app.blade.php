@@ -47,7 +47,7 @@
   
       <footer style="color: white;">
         <center>
-            <strong>Copyright &copy; <script>document.write(new Date().getFullYear());</script> &diams; <a href="https://smaadabiahpdg.sch.id/" style="color: white;">SPK BEASISWA PNP</a>. </strong>
+            <strong>Copyright &copy; <script>document.write(new Date().getFullYear());</script> &diams; <a href="https://www.pnp.ac.id/" style="color: white;">SPK BEASISWA PNP</a>. </strong>
         </center>
       </footer>
     </div>

@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class CripsDetail extends Model
 {
     use HasFactory;
-    protected $table='crips_detail';
+    protected $table='cripsdetails';
     protected $fillable = [
         'crips_id', 'deskripsi', 'kelompok'
     ];
 
     public function crips()
     {
-        return $this->belongsTo(Crips::class, 'crips_id');
+        return $this->belongsTo(Crips::class, 'crips_id','id');
     }
 }

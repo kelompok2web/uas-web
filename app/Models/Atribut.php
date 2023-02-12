@@ -8,19 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Atribut extends Model
 {
     use HasFactory;
-    protected $table='atribut';
+    protected $table='atributs';
     protected $fillable = [
         'kriteria_id', 'mahasiswa_id', 'value'
     ];
 
     public function kriteria()
     {
-        return $this->belongsTo(Kriteria::class, 'kriteria_id');
+        return $this->belongsTo(Kriteria::class, 'kriteria_id','id');
     }
 
     public function mahasiswa()
     {
-        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id');
+        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id','id');
     }
 
     public function getRealValueAttribute()

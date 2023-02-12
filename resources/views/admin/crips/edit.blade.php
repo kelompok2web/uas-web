@@ -5,6 +5,7 @@
 @endsection
 
 @section('page')
+<li class="breadcrumb-item active">Data Crips</li>
 @endsection
 
 @section('content')
@@ -12,7 +13,7 @@
 
     <form action="{{ route('crips.update', $item->id) }}" method="Post">
         @csrf
-        {{-- @method('put') --}}
+        @method('put')
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">

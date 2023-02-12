@@ -20,34 +20,35 @@
                     </div>
                 @endif
             </div>
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Nama Prodi</th>
-                    <th>Jurusan</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($prodi as $data)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $data->nama_prodi }}</td>
-                    <td>{{ $data->jurusans->nama_jurusan}}</td>
-                    <td>
-                        <form action="{{ route('prodi.execute', $data->id) }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <a href="{{ route('prodi.restore', $data->id) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-undo"></i></a>
-                            <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-          </table>
-
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama Prodi</th>
+                            <th>Jurusan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($prodi as $data)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $data->nama_prodi }}</td>
+                            <td>{{ $data->jurusans->nama_jurusan}}</td>
+                            <td>
+                                <form action="{{ route('prodi.execute', $data->id) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <a href="{{ route('prodi.restore', $data->id) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-undo"></i></a>
+                                    <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- /.card-body -->
@@ -57,4 +58,4 @@
 
 @endsection
 
-//trash berhasil
+{{-- //trash berhasil --}}

@@ -38,9 +38,13 @@
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Hasil Perhitungan</h6>
-                    <a class="collapse-item" href="{{route('saw.index')}}">Perhitungan Metode SAW</a>
-                    <a class="collapse-item" href="{{ route('kriteria.index') }}">Kriteria</a>
-                    <a class="collapse-item" href="{{ route('crips.index') }}">Crips</a>
+                    <a class="collapse-item" href="{{ route('atr-saw.sampleC')}}">Tahap Dasar SAW</a>
+                    <a class="collapse-item" href="{{ route('atr-saw.sample2C')}}">Tahap Normalisasi SAW</a>
+                    <a class="collapse-item" href="{{ route('atr-saw.sample3C')}}">Tahap Perankingan SAW</a>
+                    <a class="collapse-item" href="{{ route('atribut.index')}}">Atribut</a>
+                    <a class="collapse-item" href="{{ route('kriteria.index') }}">Data Kriteria</a>
+                    <a class="collapse-item" href="{{ route('crips.index') }}">Data Crips</a>
+                    <a class="collapse-item" href="{{ route('cripsdetail.index') }}">Data Crips Detail</a>
                 </div>
             </div>
         </li>
@@ -106,8 +110,9 @@
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Hasil Perhitungan</h6>
-                    <a class="collapse-item" href="#">Perhitungan Metode SAW</a>
-                    <a class="collapse-item" href="#">Hasil SAW</a>
+                    <a class="collapse-item" href="{{ route('atr-saw.index')}}">Atribut SAW</a>
+                    <a class="collapse-item" href="{{ route('atr-saw.mahasiswaC')}}">Perhitungan Metode SAW</a>
+                    
                 </div>
             </div>
         </li>

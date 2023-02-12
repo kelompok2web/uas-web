@@ -3,82 +3,60 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\SAW\SAW;
+use App\Models\Mahasiswa;
+use App\Models\Prodi;
+use App\Models\Atribut;
+use App\Models\Kriteria;
+use Barryvdh\DomPDF\Facade\Pdf;
+use DB;
+use Auth;
 
-class SawController extends Controller
+
+class SAWController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('admin.saw.perhitungan.index');
+    public function indexC(){
+       $saw = new SAW;
+       return $saw->index();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function getDataC(){
+        $saw = new SAW;
+        return $saw->getData();
+    }
+    
+    public function sampleC()
     {
-        //
+        $saw = new SAW;
+        return $saw->sample();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function sample2C()
     {
-        //
+        $saw = new SAW;
+        return $saw->sample2();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function sample3C()
     {
-        //
+        $saw = new SAW;
+        return $saw->sample3();
+    }
+    
+    public function sample3PDFC()
+    {
+        $saw = new SAW;
+        return $saw->sample3PDF();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function mahasiswaC(){
+        $saw = new SAW;
+        return $saw->mahasiswa();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    function test(){
+        $DATA = DB::table('kriteria')->pluck('bobot')->toArray();
+        return $DATA;
+        
     }
 }
