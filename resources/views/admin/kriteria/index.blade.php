@@ -34,6 +34,7 @@
                                 <th>Nama Kriteria</th>
                                 <th>Bobot (%)</th>
                                 <th>Tipe</th>
+                                <th>Status</th>
                                 <th>Data Crips</th>
                                 <th>Aksi</th>
                             </tr>
@@ -45,12 +46,13 @@
                                     <td>{{ $item->nama_kriteria }}</td>
                                     <td>{{ $item->bobot }}</td>
                                     <td>{{ $item->tipe_data }}</td>
+                                    <td>{{ $item->status }}</td>
                                     <td>{{ $item->crips_id? :'Tidak ada' }}</td>
                                     <td>
                                         <form action="{{ route('kriteria.destroy', $item->id) }}"method="Post">
                                             @csrf
                                             @method('delete')
-                                            <a href="#"class="btn btn-success btn-sm mt-2"><i
+                                            <a href="{{ route('kriteria.edit',$item->id)}}"class="btn btn-success btn-sm mt-2"><i
                                                     class="nav-icon fas fa-edit"></i></a>
                                             <button class="btn btn-danger btn-sm mt-2"
                                                 onclick="return confirm('Apakah yakin menghapus data ini?');"><i
@@ -117,6 +119,13 @@
                                             <option value="{{ $data->id }}">{{ $data->nama_crips }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="status">Status Kriteia</label>
+                                    <input type="text" id="status" name="status"
+                                        class="form-control @error('status') is-invalid @enderror" required>
                                 </div>
                             </div>
                         </div>

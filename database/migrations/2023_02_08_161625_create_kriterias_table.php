@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('kriteria', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kriteria')->nullable();
+            $table->string('status')->nullable();
             $table->float('bobot', 5, 2)->nullable();
             $table->enum('tipe_data', ['Float', 'Crips','Integer']);
             $table->unsignedBigInteger('crips_id')->nullable();

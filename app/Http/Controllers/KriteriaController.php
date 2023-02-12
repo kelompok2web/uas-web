@@ -44,12 +44,14 @@ class KriteriaController extends Controller
             'nama_kriteria' => 'required',
             'bobot' => 'required',
             'tipe_data' => 'required',
+            'status' => 'required',
 
         ]);
         Kriteria::create([
             'nama_kriteria' => $request->nama_kriteria,
             'bobot' => $request->bobot,
             'tipe_data' => $request->tipe_data,
+            'status' => $request->status,
             'crips_id' => $request->crips_id
         ]);
 
@@ -76,10 +78,10 @@ class KriteriaController extends Controller
     public function edit($id)
     {
         $data = Kriteria::find($id);
-        $crips = Crips::orderBy('nama_crips')->get();
+        $crip = Crips::orderBy('nama_crips')->get();
         $send=[
             "data"=>$data,
-            "crips"=>$crips,
+            "crip"=>$crip,
     
         ];
         return view('admin.kriteria.edit',$send);
@@ -99,6 +101,7 @@ class KriteriaController extends Controller
         $data->crips_id=$request->crips_id;
         $data->bobot=$request->bobot;
         $data->tipe_data=$request->tipe_data;
+        $data->status=$request->status;
         $data->save();
 
         //update user disini

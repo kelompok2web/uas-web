@@ -6,6 +6,7 @@ use App\Models\Mahasiswa;
 use App\Models\Jurusan;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
+use DB;
 
 class BerandaController extends Controller
 {
@@ -21,8 +22,11 @@ class BerandaController extends Controller
         // $DATA = DB::select("SELECT nim, nama, p1, p2,p3,bidang,p4,p5 FROM example;");
  
         $COUNTING_DATA = ['p1', 'p2', 'p3', 'p4', 'p5'];
-        $COUNTING_DATA_MIN_MAX = ['MAX', 'MIN', 'MAX', 'MAX', 'MIN'];
-        $BOBOT = [0.25, 0.15, 0.20, 0.30, 0.10];
+        // $COUNTING_DATA_MIN_MAX = ['MAX', 'MIN', 'MAX', 'MAX', 'MIN'];
+        $COUNTING_DATA_MIN_MAX = DB::table('kriteria')->pluck('status')->toArray();
+        // return $COUNTING_DATA_MIN_MAX;
+        // MAX = BENEFIT, MIN = COST
+        $BOBOT = DB::table('kriteria')->pluck('bobot')->toArray();
  
         // return $DATA;
         
