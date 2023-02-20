@@ -117,7 +117,7 @@
 															</h1>
 															<div class="row pt-lg-15 pt-5 ">
 																<div class="col-sm-6 col-8 col-md-6 col-lg-6">
-																	<a href="https://wa.me/6282386879350">
+																	<a href="/login">
 																		<button type="button"
 																		class="btn rounded-pill py-3 w-100 fs-3 fw-semibold text-white"
 																		style="background-color: #2EBBBE;">
@@ -270,7 +270,7 @@
                                                         <div class="card card-bg">
                                                             <div class="card-body justify-content-center">
                                                                 <div class="table-responsive">
-                                                                    <table class="table table-bordered gy-5 gs-7 text-center" id="dataTable" width="100%" cellspacing="0">
+                                                                    <table class="table table-bordered gy-5 gs-7 text-center"  id="dataTable2" width="100%" cellspacing="0">
                                                                         <thead>
                                                                             <tr>
                                                                                 <th class="text-center align-middle">NIM</th>
@@ -328,6 +328,12 @@
 		</div>
 
 		<script>
+
+            $(document).ready(function() {
+                $('#dataTable2').DataTable( {
+                    "order": [[ 6, "desc" ]]
+                } );
+            } );
 			// Add active class to the current button (highlight it)
 			var header = document.getElementById("navPage");
 			var links = header.getElementsByClassName("nav-link");
@@ -339,6 +345,8 @@
 			  this.className += " active";
 			  });
 			}
+
+			
 		</script>
 
 		<script>var hostUrl = "assets/";</script>
@@ -348,6 +356,8 @@
         <script src="{{asset('assets/style/custom.js')}}"></script>
         <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 
+        {{-- <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script> --}}
 		<script src="{{asset('assets/js/custom/landing.js')}}"></script>
 		<script src="{{asset('assets/js/custom/pages/pricing/general.js')}}"></script>
         <script src="{{ asset('template/js/demo/datatables-demo.js') }}"></script>

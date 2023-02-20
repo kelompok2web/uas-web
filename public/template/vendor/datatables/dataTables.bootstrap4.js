@@ -11,6 +11,11 @@
  * for further information.
  */
 (function( factory ){
+	$(document).ready(function () {
+				$('#dataTable').DataTable({
+					order: [[1, 'desc']],
+				});
+			});
 	if ( typeof define === 'function' && define.amd ) {
 		// AMD
 		define( ['jquery', 'datatables.net'], function ( $ ) {
@@ -52,6 +57,11 @@ $.extend( true, DataTable.defaults, {
 	renderer: 'bootstrap'
 } );
 
+$(document).ready(function () {
+				$('#dataTable').DataTable({
+					order: [[1, 'desc']],
+				});
+			});
 
 /* Default class modification */
 $.extend( DataTable.ext.classes, {
@@ -65,6 +75,7 @@ $.extend( DataTable.ext.classes, {
 
 /* Bootstrap paging button renderer */
 DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, buttons, page, pages ) {
+    
 	var api     = new DataTable.Api( settings );
 	var classes = settings.oClasses;
 	var lang    = settings.oLanguage.oPaginate;

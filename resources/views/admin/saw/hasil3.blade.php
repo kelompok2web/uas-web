@@ -22,7 +22,7 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                     <thead class="text-center align-middle">
                         <tr  >
                             <th class="text-center align-middle">NIM</th>
@@ -57,7 +57,17 @@
     </div>
 </div>
 
-   
+
 
 
 @endsection
+@section('script')
+    <script type="text/javascript">
+       $(document).ready(function() {
+            $('#dataTable2').DataTable( {
+                "order": [[ 6, "desc" ]]
+            } );
+        } );
+    </script>
+@endsection
+

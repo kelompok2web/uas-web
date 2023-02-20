@@ -173,6 +173,7 @@ class SAW
             }
             $ranking[] = ((int) $key + 1);
         }
+        $ranking2 =[1,'desc'];
 
         //catatan 8
 
@@ -180,7 +181,7 @@ class SAW
         //end catatan 8
 
         for ($i = 0; $i < count($DATA); $i++) {
-            $DATA[$i]->ranking = $ranking[$i];
+            $DATA[$i]->ranking = $ranking2[$i];
         }
         // return $DATA;
         $sent = [
@@ -785,7 +786,8 @@ class SAW
 
             $ranking[] = ((int) $key + 1);
         }
-
+        
+        
         //catatan 8
         // return $ranking;
         //end catatan 8
