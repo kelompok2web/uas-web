@@ -37,7 +37,7 @@
                     <div class="col-12 mb-3">
                         <h4 class="mb-3">Hasil Perhitungan Akhir</h4>
                         
-                        <table id="dataTable" class="table table-bordered table-striped table-hover">
+                        <table id="dataTable2" class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th class="text-center align-middle">NIM</th>
@@ -77,3 +77,13 @@
 
 
 @endsection
+@section('script')
+    <script type="text/javascript">
+       $(document).ready(function() {
+            $('#dataTable2').DataTable( {
+                "order": [[ 6, "desc" ]]
+            } );
+        } );
+    </script>
+@endsection
+
